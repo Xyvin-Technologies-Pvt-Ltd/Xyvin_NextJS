@@ -1,9 +1,8 @@
-import sureshPortrait from "@/assets/img/Suresh_Portrait.jpg";
-import { StaticImageData } from "next/image";
+const sureshPortrait = "/assets/img/Suresh_Portrait.jpg";
 
 interface AdvisoryBoardType {
 	id: number;
-	img: StaticImageData; // Proper typing for Next.js images
+	img: string;
 	name: string;
 	designation: string;
 	company: string;
