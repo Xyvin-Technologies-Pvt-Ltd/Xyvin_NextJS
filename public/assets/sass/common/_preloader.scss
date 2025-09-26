@@ -1,0 +1,63 @@
+/*--------------------------------------------------------------
+  3. Preloader
+----------------------------------------------------------------*/
+
+.cs_preloader_bg {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+.cs_preloader {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  .loading {
+    font-size: 90px;
+    @media screen and (max-width: 772px) {
+      font-size: 50px;
+    }
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    text-align: center;
+    span {
+      display: inline-block;
+      margin: 0 -0.05em;
+    }
+  }
+  .loading05 {
+    perspective: 1000px;
+    span {
+      color: #000;
+      transform-origin: 50% 50% -25px;
+      transform-style: preserve-3d;
+      animation: loading05 1.6s infinite;
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i + 1}) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
+    }
+  }
+}
+
+@keyframes loading05 {
+  0% {
+    transform: rotateX(-360deg);
+  }
+  70% {
+    transform: rotateX(0);
+  }
+}
+
+@-webkit-keyframes loading05 {
+  0% {
+    transform: rotateX(-360deg);
+  }
+  70% {
+    transform: rotateX(0);
+  }
+}

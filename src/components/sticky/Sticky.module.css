@@ -1,0 +1,54 @@
+/* social-icons.css */
+
+.circleMenu {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  justify-content: center;
+  align-items:center;
+  padding: 0;
+  margin: 0;
+  position: fixed; /* Add this line */
+  bottom: 20px; /* Adjust the distance from the bottom */
+  right: 20px; /* Adjust the distance from the right */
+  z-index: 999; /* Add this line to make it appear above the images */
+}
+
+.circleMenu li {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.circleMenu a {
+  display: flex; /* Use flex display */
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: #000;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+
+.circleMenu a:hover {
+  background-color: #25D366;
+}
+
+.circleMenu li:last-child a {
+  background-color: #25D366;
+}
+.circleMenu .menuss-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.circleMenu svg {
+
+  fill: #fff; /* Adjust icon color */
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+}

@@ -1,0 +1,42 @@
+/*--------------------------------------------------------------
+  26. News Letter
+----------------------------------------------------------------*/
+
+.cs_newsletter.cs_style_1 {
+  padding: 100px 30px;
+  .cs_newsletter_form {
+    position: relative;
+    max-width: 645px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cs_newsletter_input {
+    width: 100%;
+    height: 80px;
+    padding: 0 30px;
+    font-size: 18px;
+    border: 1px solid #c1c1c1;
+    background-color: transparent;
+    outline: none;
+    color: #fff;
+    &:focus {
+      border-color: var(--accent-color);
+    }
+  }
+  .cs_newsletter_btn {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    position: absolute;
+    width: 75px;
+    height: 80px;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    &:hover {
+      color: var(--accent-color);
+    }
+  }
+}

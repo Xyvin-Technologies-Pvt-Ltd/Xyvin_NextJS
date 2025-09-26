@@ -1,0 +1,38 @@
+/*--------------------------------------------------------------
+30. Blog
+----------------------------------------------------------------*/
+
+.cs_blog.cs_style_1 {
+    .cs_blog_info {
+        margin-top: 30px;
+    }
+    .cs_blog_subtitle {
+        color: var( --body-color);
+    }
+    &:hover .cs_blog_title {
+        transition: all 0.5s;
+        color: $accent;
+    }
+}
+
+.cs_andrew_jackson {
+    padding: 90px 100px;
+    .cs_andrew_jackson_text_body {
+        font-style: italic;
+        line-height: 39px;
+    }
+    .cs_footer_text.cs_color_1 {
+        color: $border;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .cs_andrew_jackson {
+        padding: 60px 10px;
+        font-size: 18px;
+    }
+    .cs_share_post {
+        gap: 30px;
+        justify-content: center;
+    }
+}

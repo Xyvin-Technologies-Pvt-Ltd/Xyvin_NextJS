@@ -1,0 +1,29 @@
+/*--------------------------------------------------------------
+  19. Timeline
+----------------------------------------------------------------*/
+
+.cs_time_line.cs_style1 {
+  h3 {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+  h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  p {
+    margin-bottom: 7px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 1380px) {
+  .cs_time_line.cs_style1 h3 {
+    font-size: 26px;
+  }
+  .cs_time_line.cs_style1 h2 {
+    font-size: 20px;
+  }
+}

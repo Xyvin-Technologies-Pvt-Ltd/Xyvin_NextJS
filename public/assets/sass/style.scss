@@ -1,0 +1,83 @@
+/* 
+|......................................................................
+| Template Name: Xyvin
+| Author: Thememarch
+| Version: 1.0.0
+|--------------------------------------------------------------------------
+|--------------------------------------------------------------------------
+| TABLE OF CONTENTS:
+|--------------------------------------------------------------------------
+| 1. Basic Color Variable
+| 2. Typography
+| 3. Preloader
+| 4. Spacing
+| 5. General
+| 6. Slider
+| 7. Video Popup
+| 8. Accordian
+| 9. Footer
+| 10. Hobble Effect
+| 11. Sidebar
+| 12. Hero
+| 13. Iconbox
+| 14. Card
+| 15. Posts
+| 16. Team
+| 17. Imagebox
+| 18. CTA
+| 19. Timeline
+| 20. Testimonial
+| 21. Portfolio
+| 22. FunFact
+| 23. Pricing
+| 24. About
+| 25. Story
+| 26. News Letter
+| 27. About Feature
+| 28. Services
+| 29. Work Process
+| 30. Blog
+| 31. Accordeon
+| 32. Contact
+ ................................................................*/
+
+
+/*--------------------------------------------------------------
+1. Basic Color Variable
+----------------------------------------------------------------*/
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+
+@import "default/color_variable";
+@import "default/typography";
+@import "common/preloader";
+@import "common/spacing";
+@import "common/general";
+@import "common/slider";
+@import "common/video-modal";
+@import "common/header";
+@import "common/footer";
+@import "common/isotope";
+@import "common/sidebar";
+@import "shortcode/hero";
+@import "shortcode/iconbox";
+@import "shortcode/card";
+@import "shortcode/post";
+@import "shortcode/team";
+@import "shortcode/imagebox";
+@import "shortcode/cta";
+@import "shortcode/timeline";
+@import "shortcode/testimonial";
+@import "shortcode/portfolio";
+@import "shortcode/funfact";
+@import "shortcode/pricing";
+@import "shortcode/about";
+@import "shortcode/story";
+@import "shortcode/newsletter";
+@import "shortcode/about_feature";
+@import "shortcode/services";
+@import "shortcode/workprocess";
+@import "shortcode/blog";
+@import "shortcode/accordion";
+@import "shortcode/contact"; 

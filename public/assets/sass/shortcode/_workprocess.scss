@@ -1,0 +1,63 @@
+/*--------------------------------------------------------------
+  29. Work Process
+----------------------------------------------------------------*/
+
+.cs_work.cs_work_1 {
+  .cs_card_work.cs_style_1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .cs_card {
+      flex-basis: 20%;
+      @media screen and (max-width: 991px) {
+        flex-basis: 100%;
+      }
+      &:nth-child(even) {
+        margin-top: 50px;
+        @media screen and (max-width: 991px) {
+          margin-top: 0px;
+        }
+      }
+      &.cs_mt_nthchild_0:nth-child(even) {
+        margin-top: 0px;
+      }
+      &.cs_style_1 {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        @media screen and (max-width: 991px) {
+          flex-direction: row;
+        }
+        .cs_posagation {
+          display: flex;
+          flex-direction: column;
+          gap: 50px;
+        }
+        .cs_work_style_1 {
+          width: 15px;
+          height: 15px;
+          background: #2E5ACE;
+          border-radius: 50%;
+        }
+        .cs_work_style_2 {
+          width: 30px;
+          height: 1px;
+          transform: rotate(90deg);
+          background: #2E5ACE;
+          margin-left: -7px;
+        }
+      }
+      .cs_work_title {
+        margin-top: 50px;
+      }
+    }
+    &.cs_color_1 {
+      .cs_work_title {
+        color: $white;
+      }
+      .cs_work_subtitle {
+        color: $border;
+      }
+    }
+  }
+}

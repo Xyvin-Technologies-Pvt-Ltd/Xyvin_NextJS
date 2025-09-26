@@ -1,0 +1,48 @@
+/*--------------------------------------------------------------
+  15. Posts
+----------------------------------------------------------------*/
+
+.cs_post.cs_style_1 {
+  .cs_post_thumb {
+    display: block;
+    img {
+      width: 100%;
+    }
+  }
+  .cs_post_title {
+    font-size: 22px;
+  }
+  .cs_post_thumb {
+    margin-bottom: 30px;
+  }
+  .cs_post_info {
+    padding-left: 15px;
+  }
+}
+
+.cs_post.cs_style_2 {
+  display: block;
+  .cs_post_info {
+    background-color: $black;
+    padding-left: 50px;
+    padding-top: 60px;
+    padding-right: 52px;
+    .cs_post_title {
+      color: $white;
+    }
+    p {
+      color: $border;
+      font-size: 16px;
+    }
+    .cs_section_heading_right {
+      padding-top: 40px;
+      padding-bottom: 60px;
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+}
+
+@media screen and (max-width: 350px) {
+}

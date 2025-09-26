@@ -1,0 +1,217 @@
+/*--------------------------------------------------------------
+  16. Team
+----------------------------------------------------------------*/
+
+.cs_team.cs_style1 {
+    overflow: hidden;
+    position: relative;
+    .cs_member_thumb {
+        border-radius: 15px;
+        position: relative;
+        overflow: inherit;
+        overflow: hidden;
+        img {
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            border-radius: inherit;
+            transition: all 0.8s ease;
+        }
+    }
+    .cs_member_overlay {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        border-radius: inherit;
+        background: linear-gradient(360deg, #000000 0%, rgba(77, 77, 77, 0) 100%);
+    }
+    .cs_member_social {
+        svg {
+            height: 20px;
+            width: 20px;
+        }
+    }
+    .cs_member_name {
+        font-size: 22px;
+        margin-bottom: 6px;
+    }
+    .cs_member_info {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 3;
+        padding: 30px 25px;
+    }
+    .cs_member_social {
+        position: absolute;
+        z-index: 2;
+        left: 13px;
+        top: 50px;
+        display: flex;
+        flex-direction: column;
+        a {
+            display: flex;
+            margin: 12px;
+            transform: scale(0) rotate(45deg);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+    }
+    &:hover {
+        .cs_member_social {
+            a {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+        .cs_member_thumb {
+            img {
+                transform: scale(1.06) translateY(8px);
+            }
+        }
+    }
+}
+
+
+/* start teams images */
+
+.cs_team_section {
+    display: flex;
+    min-height: 430px;
+    overflow: hidden;
+    gap: 20px;
+    position: relative;
+    .cs_team_img {
+        overflow: hidden;
+        flex-grow: 1;
+        position: relative;
+        transition: flex-grow 0.5s ease;
+        cursor: pointer;
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-position: center;
+            transition: all 0.5s ease;
+            // z-index: -100;
+        }
+        .cs_team_text {
+            z-index: 200;
+            position: absolute;
+            color: $white;
+            transform: rotate(-90deg);
+            transform-origin: left;
+            bottom: 30px;
+            left: 70px;
+            transition: transform 0.7s ease;
+            .cs_team_text_title {
+                color: $white;
+                margin-bottom: 5px;
+            }
+            .cs_team_subtitle {
+                color: $white;
+                margin: 0;
+                font-size: 16px;
+                line-height: 160%;
+            }
+        }
+        &:hover .cs_team_text {
+            opacity: 1;
+        }
+        &:hover {
+            flex-grow: 1.5;
+        }
+        &:hover>.cs_team_text {
+            opacity: 1;
+            transform: rotate(0deg);
+            transition: all 0.7s ease-in-out;
+            .cs_team_text_title {
+                transition: all 0.7s;
+                transition-delay: 0.7s;
+                color: $accent;
+            }
+        }
+        .cs_portfolio_overlay {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient( 0deg, rgba(10, 10, 10, 0.774), rgba(0, 0, 0, 0));
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+        }
+    }
+}
+
+
+/* end teams images */
+
+
+/* start team details page */
+
+.cs_team_details {
+    .cs_team_details_text {
+        line-height: 200%;
+    }
+    p>span {
+        color: var(--primary-color);
+    }
+    .cs_funfact.cs_style1 {
+        .cs_stroke_text {
+            font-size: 60px;
+            font-family: "Inter Tight";
+        }
+    }
+    &.cs_funfact {
+        display: flex;
+        justify-content: space-between;
+        .cs_funfact_max_w {
+            max-width: 252px;
+        }
+    }
+}
+
+
+/* end team details page */
+
+@media screen and (max-width: 1380px) {
+    .cs_team.cs_style1 .cs_member_name {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .cs_team_section {
+        flex-direction: column;
+        height: 1800px;
+        .cs_team_img {
+            img {
+                height: auto;
+            }
+        }
+    }
+    //   start team details page
+    .cs_team_details {
+        &.cs_funfact {
+            flex-wrap: wrap;
+            .cs_funfact_max_w {
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .cs_team_section {
+        flex-direction: column;
+        height: 1200px;
+        .cs_team_img {
+            img {
+                height: auto;
+            }
+        }
+    }
+}

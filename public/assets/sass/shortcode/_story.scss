@@ -1,0 +1,44 @@
+/*--------------------------------------------------------------
+  25. Story
+----------------------------------------------------------------*/
+
+.cs_agency.agency_about_images_posation {
+  margin-top: -255px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  justify-content: space-between;
+  .cs_img_section_1 {
+    flex-basis: 363px;
+  }
+  .cs_img_section_2 {
+    flex-basis: 527px;
+  }
+  .cs_img_section_3 {
+    flex-basis: 370px;
+    :nth-child(1) {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .cs_agency {
+    &.agency_about_images_posation {
+      margin-top: -70px !important;
+      flex-wrap: wrap;
+      .cs_img_section_1 {
+        flex-basis: 100%;
+      }
+      .cs_img_section_2 {
+        flex-basis: 100%;
+      }
+      .cs_img_section_3 {
+        flex-basis: 100%;
+        :nth-child(1) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+/*--------------------------------------------------------------
+  18. CTA
+----------------------------------------------------------------*/
+
+.cs_cta.cs_style1 {
+    padding: 90px 30px;
+    border-radius: 15px;
+    .cs_cta_in {
+        position: relative;
+        z-index: 2;
+    }
+    .cs_cta_title {
+        font-weight: 600;
+        font-size: 50px;
+    }
+}
+
+.cs_bg_img_about_titile {
+    width: 100%;
+}
+
+.cs_learning_project {
+    .cs_section_heading.cs_style_1 {
+        .cs_section_heading_text {
+            .cs_section_title_3.cs_color_2 {
+                color: $white;
+            }
+        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        text-transform: capitalize;
+        padding: 150px 250px;
+        .cs_section_heading_right {
+            margin-top: 70px;
+            .cs_btn.cs_style_1.cs_color_1 {
+                color: $black;
+            }
+            .cs_btn.cs_style_1.cs_color_2 {
+                color: $white;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .cs_cta.cs_style1 .cs_cta_title {
+        font-size: 42px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .cs_learning_project {
+        .cs_section_heading.cs_style_1 {
+            padding: 60px 0px;
+            .cs_section_heading_right {
+                margin-top: 30px;
+            }
+        }
+    }
+    .cs_cta.cs_style1 {
+        padding: 70px 30px;
+        border-radius: 15px;
+        .cs_cta_title {
+            font-size: 36px;
+            br {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .cs_cta.cs_style1 {
+        br {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .cs_cta.cs_style1 {
+        padding: 70px 20px;
+        .cs_cta_title {
+            font-size: 28px;
+        }
+    }
+}

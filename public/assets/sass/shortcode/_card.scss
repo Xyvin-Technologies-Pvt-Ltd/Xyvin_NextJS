@@ -1,0 +1,225 @@
+/*--------------------------------------------------------------
+  14. Card
+----------------------------------------------------------------*/
+
+.cs_card.cs_style_1 {
+    display: flex;
+    position: relative;
+    align-items: center;
+    .cs_services_item_hover_img {
+        width: 100px;
+        height: 400px;
+    }
+    .cs_card_number {
+        font-size: 120px;
+        font-weight: 900;
+        line-height: 1em;
+        display: inline-block;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-attachment: scroll;
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+    }
+    .cs_card_left {
+        flex: none;
+        width: 26%;
+        padding-right: 25px;
+    }
+    .cs_card_right {
+        flex: 1;
+        padding: 45px 0;
+    }
+    .cs_card_right_in {
+        max-width: 510px;
+    }
+    .cs_card_title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    .cs_card_link_wrap {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        color: --primary-color;
+    }
+    .cs_card_link {
+        position: relative;
+        overflow: hidden;
+        height: 30px;
+        width: 30px;
+        display: block;
+        overflow: hidden;
+        span {
+            display: block;
+            height: inherit;
+            width: inherit;
+            transition: all 0.6s;
+            &:first-child {
+                position: relative;
+            }
+            &:last-child {
+                position: absolute;
+                left: -50px;
+                bottom: -50px;
+                transform: scale(0.1);
+            }
+        }
+        &:hover {
+            span {
+                &:first-child {
+                    transform: translate(50px, -50px);
+                }
+                &:last-child {
+                    transform: translate(50px, -50px) scale(1);
+                }
+            }
+        }
+    }
+    &.cs_color_1 {
+        .cs_card_title {
+            color: #fff;
+        }
+        .cs_card_subtitle {
+            color: #c1c1c1;
+        }
+        .cs_card_subtitle_services {
+            color: #454545;
+        }
+        .cs_card_link_wrap {
+            color: #fff;
+        }
+        .cs_card_link_wrap_services {
+            color: #000;
+        }
+    }
+}
+
+.cs_card_1_list {
+    .cs_card.cs_style_1:not(:last-child) {
+        .cs_card_right {
+            border-bottom: 1px solid $border;
+        }
+    }
+    .cs_card.cs_style_1.cs_color_1:not(:last-child) {
+        .cs_card_right {
+            border-color: #454545;
+        }
+    }
+}
+
+.cs_card.cs_style_2 {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    .cs_card_right {
+        flex: none;
+        width: 160px;
+    }
+    .cs_card_brand {
+        font-size: 22px;
+        margin: 0;
+    }
+    .cs_card_left {
+        display: flex;
+        flex: none;
+        max-width: 740px;
+    }
+    .cs_card_logo {
+        flex: none;
+        width: 180px;
+        padding-right: 30px;
+    }
+    .cs_card_title {
+        font-size: 22px;
+        margin-bottom: 16px;
+    }
+    .cs_card_hover_img {
+        position: absolute;
+        transform: rotate(-15deg) translateY(-58%) skewY(10deg);
+        right: 220px;
+        top: 50%;
+        width: 260px;
+        transition: all 0.45s;
+        opacity: 0;
+        visibility: hidden;
+        transform-origin: top center;
+        img {
+            width: 100%;
+        }
+    }
+    &.active {
+        .cs_card_hover_img {
+            opacity: 1;
+            visibility: visible;
+            transform: rotate(-15deg) translateY(-58%) skewY(0deg);
+        }
+    }
+}
+
+.cs_card_2_list {
+    .cs_card.cs_style_2 {
+        &:not(:last-child) {
+            padding-bottom: 50px;
+            margin-bottom: 50px;
+            &::after {
+                content: "";
+                position: absolute;
+                height: 1px;
+                width: calc(100% - 180px);
+                bottom: 0;
+                right: 0;
+                background-color: rgba(var(--primary-color), 0.1);
+            }
+        }
+    }
+}
+
+.cs_blog.cs_style_1 {
+    .cs_blog_info {
+        margin-top: 30px;
+    }
+    .cs_blog_subtitle {
+        color: var( --body-color);
+    }
+    &:hover .cs_blog_title {
+        transition: all 0.5s;
+        color: $accent;
+    }
+}
+
+@media screen and (max-width: 1400px) {}
+
+@media screen and (max-width: 1199px) {}
+
+@media screen and (max-width: 991px) {
+    .cs_card.cs_style_1 {
+        flex-direction: column;
+        align-items: start;
+    }
+    .cs_card.cs_style_2 {
+        flex-direction: column;
+        .cs_card_left {
+            order: 2;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .cs_card_right {
+            order: 1;
+        }
+        .cs_card_hover_img {
+            width: 150px !important;
+            margin-top: 45px;
+            right: 20px;
+        }
+        &.active {
+            .cs_card_hover_img {
+                opacity: 0.5;
+            }
+        }
+    }
+}

@@ -1,0 +1,451 @@
+/*--------------------------------------------------------------
+  21. Portfolio
+----------------------------------------------------------------*/
+
+
+/* start design studio page portfolio */
+
+.project_successfull {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-auto-flow: dense;
+    .cs_portfolio {
+        .cs_portfolio_img {
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+.project_successfull_1 {
+    grid-column: auto / span 2;
+    grid-row: 1/2;
+}
+
+.project_successfull_2 {
+    grid-column: auto / span 5;
+    grid-row: 1/2;
+}
+
+.project_successfull_3 {
+    grid-column: auto / span 3;
+    grid-row: 2/3;
+}
+
+.project_successfull_4 {
+    grid-column: auto / span 2;
+    grid-row: 2/3;
+}
+
+.project_successfull_5 {
+    grid-column: auto / span 2;
+    grid-row: 2/3;
+}
+
+
+/* end design studio page portfolio */
+
+// start  Some Recent Project
+.cs_creative_protfolio_details {
+    .cs_project_card {
+        .cs_project_card_text {
+            margin-top: 30px;
+            margin-left: 30px;
+             :hover {
+                color: $accent;
+            }
+            .cs_subtitle {
+                color: $accent;
+            }
+        }
+    }
+}
+
+
+/* end Some Recent Project */
+
+.cs_creative_protfolio_menu {
+    ul {
+        list-style-type: none;
+        padding: 0px;
+        display: flex;
+        gap: 50px;
+        li {
+            cursor: pointer;
+            // &:nth-child(1) {
+            //     color: $accent;
+            // }
+           
+            &:active {
+                color: $accent;
+            }
+            &:hover {
+                color: $accent;
+            }
+        }
+        .active {
+            color: $accent;
+        }
+        margin-bottom: 100px;
+    }
+}
+
+
+/*start portfolio page isotop */
+
+.cs_isotop_item_menu {
+    ul {
+        list-style-type: none;
+        padding: 0px;
+        display: flex;
+        gap: 50px;
+        li {
+            cursor: pointer;
+            // &:nth-child(1) {
+            //     color: $accent;
+            // }
+            // &:active {
+            //     color: $accent;
+            // }
+            &:hover {
+                color: $accent;
+            }
+        }
+        .active{
+            color: $accent;
+        }
+        margin-bottom: 100px;
+    }
+}
+
+.cs_isotop_items_details {
+    .cs_item {
+        padding: 0px 30px 30px 0px;
+        .cs_item_hover {
+            overflow: hidden;
+            position: relative;
+            .cs_item_text {
+                position: absolute;
+                background-color: transparent;
+                left: 50px;
+                bottom: -100px;
+                transition: bottom 0.5s ease;
+                h6 {
+                    color: #fff;
+                }
+                p {
+                    color: #ff6b00;
+                }
+            }
+        }
+        .cs_item_hover:hover .cs_item_text {
+            bottom: 50px;
+        }
+    }
+}
+
+
+/* Start Horizontal Panels */
+
+.cs_horizontal_scroll_wrap {
+    position: relative;
+}
+
+.cs_horizontal_scrolls {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 0px;
+    width: 100%;
+    overflow: hidden;
+    .cs_portfolio.cs_style_1 {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    >.cs_horizontal_scroll {
+        flex: none;
+        width: 25vw;
+    }
+}
+
+
+/* End Horizontal Panels */
+
+///////////////
+.cs_portfolio.cs_style_1 {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    transition: all 0.2s ease;
+    .cs_portfolio_info {
+        width: 100%;
+        position: absolute;
+        bottom: -30px;
+        left: 0;
+        padding: 0 15px 55px 55px;
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+    .cs_portfolio_img {
+        width: 100%;
+        img {
+            width: 100%;
+            transform: scale(1.06);
+            transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+        }
+    }
+    .cs_portfolio_overlay {
+        position: absolute;
+        left: 25px;
+        top: 25px;
+        right: 25px;
+        bottom: 25px;
+        background-color: rgba(var(--primary-color), 0.5);
+        transition: all 0.5s ease;
+        transform: scale(1.15);
+        opacity: 0;
+    }
+    .cs_portfolio_title {
+        font-size: 22px;
+        color: $white;
+        margin-bottom: 8px;
+        &:hover {
+            // color: $accent;
+        }
+    }
+    .cs_portfolio_subtitle {
+        color: #e0e0e0;
+        font-size: 18px;
+        line-height: 1.6em;
+        &.cs_color_1 {
+            color: $white;
+        }
+    }
+    &:hover {
+        .cs_portfolio_overlay {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .cs_portfolio_info {
+            bottom: 0;
+            opacity: 1;
+        }
+        .cs_portfolio_img {
+            img {
+                transform: scale(1);
+            }
+        }
+    }
+}
+
+.cs_portfolio.cs_style_2 {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    transition: all 0.2s ease;
+    .cs_portfolio_info {
+        width: 100%;
+        position: absolute;
+        bottom: -30px;
+        opacity: 0;
+        transition: all 0.5s ease;
+        .cs_text.cs_style_1 {
+            margin: 25px;
+            background-color: $white;
+            padding: 30px 1px 30px 30px;
+        }
+    }
+    .cs_portfolio_img {
+        width: 100%;
+        img {
+            width: 100%;
+            transform: scale(1.06);
+            transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+        }
+    }
+    .cs_portfolio_title {
+        margin-bottom: 7px;
+        font-size: 22px;
+        line-height: 27px;
+        &:hover {
+            // color: $accent;
+        }
+    }
+    .cs_portfolio_subtitle {
+        color: #bababa;
+        font-size: 18px;
+        font-weight: 400;
+    }
+    &:hover {
+        .cs_portfolio_info {
+            bottom: 0;
+            opacity: 0.8;
+        }
+        .cs_portfolio_img {
+            img {
+                transform: scale(1);
+            }
+        }
+    }
+}
+
+
+/* end Some Recent Project */
+
+
+/* start portfolio details page */
+
+.cs_portfolio_details {
+    .cs_portfolio_details_row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .cs_text_style_1 {
+        .cs_headed_text {
+            font-size: 16px;
+            line-height: 24px;
+            color: #c1c1c1;
+        }
+        .cs_title_text {
+            font-weight: 400;
+            line-height: 33px;
+        }
+    }
+    .cs_img_show_text.cs_text_style_1 {
+        margin-bottom: 50px;
+        .cs_heading_text {
+            margin-bottom: 30px;
+        }
+        .cs_text_style_body {
+            font-size: 18px;
+            line-height: 36px;
+            font-weight: 400;
+        }
+    }
+    .cs_ul_ml {
+        margin-left: 50px;
+        font-size: 20px;
+        line-height: 40px;
+    }
+    .cs_solutions_section {
+        .cs_heading_text {
+            margin-bottom: 30px;
+        }
+        .cs_text_style_body {
+            line-height: 36px;
+        }
+        .cs_solutions_section_img_show {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-auto-rows: 1fr;
+            gap: 30px;
+            .portfolio_solution_1 {
+                grid-column: 1/2;
+            }
+            .portfolio_solution_2 {
+                grid-column: 2/3;
+            }
+            .portfolio_solution_3 {
+                grid-column: 1/3;
+            }
+        }
+        .cs_img_footer_title.cs_color_1 {
+            margin-top: 50px;
+            color: #101010;
+            line-height: 36px;
+            font-weight: 400;
+        }
+    }
+    .cs_section_next_prv {
+        display: flex;
+        gap: 25px;
+        justify-content: center;
+        color: #101010;
+    }
+    .cs_blog_detail_text_2 {
+        .cs_text_style_body {
+            font-size: 18px;
+            line-height: 36px;
+            font-weight: 400;
+        }
+    }
+}
+
+
+/* end portfolio details page */
+
+@media screen and (max-width: 991px) {
+    /* start design studio page portfolio */
+    .project_successfull {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        .cs_portfolio {
+            .cs_portfolio_img {
+                width: 100%;
+                height: 100%;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+    /* end design studio page portfolio */
+    .cs_isotop_items_details {
+        .cs_item {
+            padding: 0px 10px 10px 0px;
+        }
+    }
+    /* start portfolio details page */
+    .cs_portfolio_details {
+        .cs_portfolio_details_row {
+            .cs_portfolio_details_btn {
+                margin-top: 60px;
+            }
+        }
+        .cs_ul_ml {
+            margin-left: 0px;
+        }
+    }
+    /* end portfolio details page */
+}
+
+@media screen and (max-width: 767px) {
+    .project_successfull {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        .cs_portfolio {
+            .cs_portfolio_img {
+                img {
+                    width: 450px;
+                    height: 400px;
+                }
+            }
+        }
+    }
+    .cs_creative_protfolio_menu {
+        ul {
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 0px;
+            margin-bottom: 60px;
+        }
+    }
+    .cs_isotop_item_menu {
+        ul {
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 0px;
+            margin-bottom: 60px;
+        }
+    }
+}

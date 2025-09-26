@@ -1,0 +1,44 @@
+/*--------------------------------------------------------------
+1. Basic Color Variable
+----------------------------------------------------------------*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+$white: #fff;
+$black: #000;
+$primary: #01112F;
+$secondary: #454545;
+$ternary: #999696;
+$border: #c1c1c1;
+$gray: #181818;
+$hrcOlor: #d9d9d9;
+$cr_banner: #f4f4f4;
+$accent: #8C2CF4;
+$gray_sc: #565656;
+:root {
+    --body-font-family: "Kanit", sans-serif;
+    --heading-font-family: "Inter Tight", sans-serif;
+    --accent-color: #2E5ACE;
+    --body-color: #454545;
+    --heading-color: #01112F;
+    --primary-color: #01112F;
+    --cr_banner-color: #f4f4f4;
+    --border-color: #c1c1c1;
+    --common-color-white: #ffffff;
+    --common-color-black: #000000;
+    --drak-color: #ffffff;
+}
+
+.dark {
+    --drak-color: #181818;
+    --cr_banner-color: #181818;
+    --accent-color: #2E5ACE;
+    --body-color: #e0e0e0;
+    --heading-color: #ffffff;
+    --primary-color: #ffffff;
+    --common-color-white: #000000;
+    --common-color-black: #ffffff;
+}

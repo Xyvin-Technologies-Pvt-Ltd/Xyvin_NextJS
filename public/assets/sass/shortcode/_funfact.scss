@@ -1,0 +1,68 @@
+/*--------------------------------------------------------------
+  22. FunFact
+----------------------------------------------------------------*/
+
+.cs_funfact.cs_style1 {
+  .cs_funfact_number {
+    display: flex;
+    align-items: center;
+    > span + span {
+      position: relative;
+      top: -3px;
+    }
+  }
+  .cs_funfact_text {
+    font-size: 28px;
+    line-height: 1.6em;
+    position: relative;
+    padding: 5px 0;
+    padding-left: 27px;
+    &::before {
+      content: "";
+      position: absolute;
+      height: 54px;
+      width: 54px;
+      border-radius: 50%;
+      left: 0;
+      top: 0;
+      opacity: 0.2;
+      background-color: var(--accent-color);
+    }
+    &.cs_color_1 {
+      &::before {
+        content: "";
+        position: absolute;
+        height: 54px;
+        width: 54px;
+        border-radius: 50%;
+        left: 0;
+        top: 0;
+        opacity: 0.2;
+        background-color: var(--body-color);
+      }
+    }
+    p {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 1399px) {
+}
+
+@media screen and (max-width: 1380px) {
+}
+
+@media screen and (max-width: 1199px) {
+}
+
+@media screen and (max-width: 991px) {
+}
+
+@media screen and (max-width: 767px) {
+}
+
+@media screen and (max-width: 575px) {
+}

@@ -1,0 +1,66 @@
+/*--------------------------------------------------------------
+32. Contact 
+----------------------------------------------------------------*/
+
+.cs_contact_ms {
+  display: flex;
+  width: 85vw;
+  gap: 9%;
+  .cs_contact_section_2 {
+    flex-basis: 50%;
+  }
+  .cs_contact {
+    flex-basis: 40%;
+    .cs_contact_title {
+      font-size: 100px;
+      font-weight: 900;
+    }
+  }
+}
+
+.cs_icon {
+  .cs_icon_style {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $black;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .cs_icon_style:hover {
+    background-color: $accent;
+  }
+  .cs_icon_text {
+    .cs_icon_title {
+      margin: 0;
+      margin-top: 15px;
+    }
+    .cs_icon_subtitle {
+      font-size: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .cs_contact_ms {
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    .cs_contact_section_2 {
+      width: 100%;
+      margin-top: 60px;
+    }
+    .cs_contact {
+      width: 100%;
+      margin: 0px 0px 0px 0px;
+      .cs_contact_title {
+        font-size: 50px;
+      }
+    }
+  }
+  .cs_icon {
+    margin-top: 0px;
+  }
+}
