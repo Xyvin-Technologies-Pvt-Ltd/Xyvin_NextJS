@@ -24,17 +24,24 @@ const advisory_board_data: AdvisoryBoardType[] = [
 		expertise: ["Business Intelligence & Data", "IT Budgeting", "IT Strategy", "IT System Management", "Project Management"]
 	},
 	
-{
-		id: 2,
-		img: nowshadPortrait,
-		name: "Nowshad Hameed",
-		designation: "Advisor",
-		company: "Exctel Engineering LLC",
-		linkedin: "https://linkedin.com/in/nowshazd",
-		bio: "Nowshad Hameed, CEO of Exctel Engineering LLC, specializes in AI, cloud technologies, and digital transformation, bringing over 30 years of experience in ICT, industrial automation, and strategic technology leadership.",
 
-		expertise: ["Artificial Intelligence (AI)", "Cloud Computing", "Blockchain", "Digital Transformation Strategy", "ICT & Industrial Automation"]
-	}
+		
+{
+  id: 2,
+  img: nowshadPortrait,
+  name: "Nowshad Hameed",
+  designation: "Chief Executive Office",
+  company: "Exctel Engineering Pte Ltd",
+  linkedin: "https://linkedin.com/in/nowshazd",
+  bio: "Nowshad Hameed, CEO of Exctel Engineering Pte Ltd, brings nearly 30 years of experience in project management and expertise across telecommunications, safety, security, and building management systems. ",
+  expertise: [
+	"Project Management",
+    "Industrial Automation",
+    "Telecommunications Systems",
+    "Safety & Security Systems", 
+    
+  ]
+}
 
 
 ];

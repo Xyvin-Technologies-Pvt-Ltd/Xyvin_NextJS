@@ -351,14 +351,14 @@ const HeaderOne = () => {
       <hr className="mt-2 me-5 mb-2" />
 
       {/* Email */}
-      <h2>
+      <h4>
         <a
           href="mailto:admin@xyvin.com"
           className="d-flex align-items-center gap-2 cs_primary_font cs_text_btn "
         >
           <span className="cs_black">admin@xyvin.com</span>
         </a>
-      </h2>
+      </h4>
     </div>
   </div>
 </div>
