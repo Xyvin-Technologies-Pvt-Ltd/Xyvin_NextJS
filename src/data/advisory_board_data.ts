@@ -1,4 +1,5 @@
 const sureshPortrait = "/assets/img/Suresh_Portrait.jpg";
+const nowshadPortrait = "/assets/img/Nowshad_Portrait.jpg";
 
 interface AdvisoryBoardType {
 	id: number;
@@ -20,7 +21,28 @@ const advisory_board_data: AdvisoryBoardType[] = [
 		company: "Tech Innovations Inc.",
 		linkedin: "https://www.linkedin.com/in/suresh-kumar",
 		bio: "With over 20 years of experience in technology leadership and digital transformation, Suresh brings strategic insights to help organizations navigate complex technological challenges and drive innovation.",
-		expertise: ["Business Intelligence & Data", "IT Budgeting", "IT Strategy", "IT System Management", "Project Management"]
+		expertise: [
+			"Business Intelligence & Data",
+			"IT Budgeting",
+			"IT Strategy",
+			"IT System Management",
+			"Project Management"
+		]
+	},
+	{
+		id: 2,
+		img: nowshadPortrait,
+		name: "Nowshad Hameed",
+		designation: "Chief Executive Officer",
+		company: "EXCTEL",
+		linkedin: "https://linkedin.com/in/nowshazd",
+		bio: "Nowshad Hameed, CEO of EXCTEL, brings nearly 30 years of experience in project management and expertise across telecommunications, safety, security, and building management systems.",
+		expertise: [
+			"Project Management",
+			"Industrial Automation",
+			"Telecommunications Systems",
+			"Safety & Security Systems"
+		]
 	}
 ];
 

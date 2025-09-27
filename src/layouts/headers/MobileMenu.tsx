@@ -67,6 +67,14 @@ const menu_data: DataType[] = [
   //   ],
   // },
   {
+
+    id: 3,
+    title: "Advisory Board",
+    link: "/Xyvin/advisory-board",
+    has_dropdown: false,
+  },
+  {
+
     id: 4,
     title: "Services",
     link: "/Xyvin/service",
