@@ -19,7 +19,7 @@ interface DataType {
 const footer_data: DataType = {
   email: `admin@xyvin.com`,
   phone: `+91  813 891 6303`,
-  location: `Xyvin Technologies Private Limited, dewSpace Business Center, Ernakulam North, Kochi, 
+  location: `Xyvin Technologies Private Limited, 67/440, 2nd Floor, Mather Square, Opp. North Railway Station, Kochi, Kerala, 
 India - 682018`,
   footer_info: `Smart solutions for businesses to succeed online — powered by tech, crafted with AI 
 insight.`,
