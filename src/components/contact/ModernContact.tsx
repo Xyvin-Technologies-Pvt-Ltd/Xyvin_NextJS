@@ -63,9 +63,9 @@ const ModernContact = () => {
       icon: MapPin,
       title: "Our Office",
       details: [
-        "dewSpace Business Center",
-        "Ernakulam North, Kochi",
-        "Kerala, India - 682018",
+        "67/440, 2nd Floor, Mather Square",
+        "Opp. North Railway Station",
+        "Kochi, Kerala, India - 682018",
       ],
       action: "Get Directions",
       link: "https://www.google.com/maps",
