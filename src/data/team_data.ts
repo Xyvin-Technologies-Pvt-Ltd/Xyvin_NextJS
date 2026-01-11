@@ -57,14 +57,14 @@ const team_data: DataType[] = [
 		designation: "App Developer",
 		linkedin:"https://www.linkedin.com/in/sreeram-i-s-37403a204?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
 	},
-	{
-		id: 8,
-		img: "/assets/img/team/Frame 1171276606.png",
-		avatar_name: "Nihal Anil",
-		designation: "AI Specialist",
-		linkedin:" https://www.linkedin.com/in/cntrlx?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+	// {
+	// 	id: 8,
+	// 	img: "/assets/img/team/Frame 1171276606.png",
+	// 	avatar_name: "Nihal Anil",
+	// 	designation: "AI Specialist",
+	// 	linkedin:" https://www.linkedin.com/in/cntrlx?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
 
-	}
+	// }
 
 	// team data
 
