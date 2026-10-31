@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import React from "react";
 import ServiceHero from "@/components/hero/ServiceHero";
 import ServicesGrid from "@/components/services/ServicesGrid";
@@ -9,13 +9,12 @@ import Wrapper from "@/layouts/Wrapper";
 import ModernFooter from "@/layouts/footers/ModernFooter";
 import HeaderOne from "@/layouts/headers/HeaderOne";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Services",
   description:
     "Custom software, web development, mobile apps, ERP systems, API integration and AI automation from Xyvin Technologies in Kochi.",
-  alternates: { canonical: "/services" },
-  openGraph: { title: "Services", url: "/services" },
-};
+  path: "/services",
+});
 
 const index = () => {
   return (

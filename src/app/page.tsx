@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import React from "react";
 import HeaderOne from "@/layouts/headers/HeaderOne";
 import HeroHomeOne from "@/components/hero/HeroHomeOne";
@@ -10,12 +10,11 @@ import ModernFooter from "@/layouts/footers/ModernFooter";
 import Wrapper from "@/layouts/Wrapper";
 import BrandHomeOne from "@/components/brand/BrandHomeOne";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   description:
     "Xyvin Technologies builds custom software, web platforms, mobile apps, ERP systems and AI automation for growing businesses in India and the GCC.",
-  alternates: { canonical: "/" },
-  openGraph: { title: "Xyvin Technologies | Custom Software, Web & AI Solutions", url: "/" },
-};
+  path: "/",
+});
 
 const index = () => {
   return (
