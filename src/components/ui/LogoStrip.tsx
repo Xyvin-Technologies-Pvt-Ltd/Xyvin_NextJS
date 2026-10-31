@@ -1,0 +1,24 @@
+import Image from "next/image";
+import clients from "@/data/clients";
+import { cn } from "@/lib/cn";
+
+// Static grid of client logos (no marquee), shown in greyscale so no single brand dominates.
+export default function LogoStrip({ limit = 12, className }: { limit?: number; className?: string }) {
+  return (
+    <ul className={cn("grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-3 lg:grid-cols-6", className)}>
+      {clients.slice(0, limit).map((client, i) => (
+        <li
+          key={client.name}
+          className={cn("h-24 items-center justify-center bg-white px-6", i >= 6 ? "hidden sm:flex" : "flex")}
+        >
+          <Image
+            src={client.logo}
+            alt={client.name}
+            className="max-h-10 w-auto max-w-full object-contain"
+            sizes="160px"
+          />
+        </li>
+      ))}
+    </ul>
+  );
+}

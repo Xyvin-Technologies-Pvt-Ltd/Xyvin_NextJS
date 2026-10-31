@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white font-sans text-[17px] leading-relaxed text-navy-900 antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-semibold text-navy-900;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-navy-900;
+  }
+
+  ::selection {
+    @apply bg-accent-soft text-navy-900;
+  }
+
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
+@layer components {
+  /* Long-form text: blog posts and legal pages. */
+  .prose-site {
+    @apply max-w-none text-navy-800;
+  }
+  .prose-site h2 {
+    @apply mb-3 mt-10 text-2xl;
+  }
+  .prose-site h3 {
+    @apply mb-2 mt-8 text-xl;
+  }
+  .prose-site p,
+  .prose-site ul,
+  .prose-site ol {
+    @apply mb-5;
+  }
+  .prose-site ul {
+    @apply list-disc pl-6;
+  }
+  .prose-site ol {
+    @apply list-decimal pl-6;
+  }
+  .prose-site li {
+    @apply mb-1;
+  }
+  .prose-site a {
+    @apply underline decoration-navy-300 underline-offset-2 hover:decoration-navy-900;
+  }
+  .prose-site code {
+    @apply rounded bg-paper px-1.5 py-0.5 text-[0.9em];
+  }
+  .prose-site pre {
+    @apply mb-5 overflow-x-auto rounded-lg bg-navy-950 p-4 text-sm text-navy-50;
+  }
+  .prose-site pre code {
+    @apply bg-transparent p-0;
+  }
+}
+
+/* Respect the visitor's reduced-motion setting everywhere. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

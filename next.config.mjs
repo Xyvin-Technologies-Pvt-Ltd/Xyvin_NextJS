@@ -1,33 +1,33 @@
 /** @type {import('next').NextConfig} */
-import { createProxyMiddleware } from 'http-proxy-middleware';
+
+const securityHeaders = [
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
+];
+
+// Old URLs (with the /Xyvin prefix) permanently redirect to the new ones.
+const legacyRedirects = ["Xyvin", "xyvin"].flatMap((prefix) => [
+  { source: `/${prefix}/service`, destination: "/services", permanent: true },
+  { source: `/${prefix}/portfolio`, destination: "/work", permanent: true },
+  { source: `/${prefix}/advisory-board`, destination: "/about#advisors", permanent: true },
+  { source: `/${prefix}/:path*`, destination: "/:path*", permanent: true },
+]);
 
 const nextConfig = {
-  reactStrictMode: false,
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'media2.dev.to',
-      },
-      {
-        protocol: 'https',
-        hostname: 'darkorange-albatross-944944.hostingersite.com',
-      },
-    ],
-  },
-  async rewrites() {
+  reactStrictMode: true,
+  poweredByHeader: false,
+  async redirects() {
     return [
-      {
-        source: '/wp-json/:path*',
-        destination: 'https://darkorange-albatross-944944.hostingersite.com/wp-json/:path*',
-      },
+      ...legacyRedirects,
+      { source: "/portfolio", destination: "/work", permanent: true },
+      { source: "/service", destination: "/services", permanent: true },
+      { source: "/advisory-board", destination: "/about#advisors", permanent: true },
     ];
   },
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = { fs: false, module: false };
-    }
-    return config;
+  async headers() {
+    return [{ source: "/:path*", headers: securityHeaders }];
   },
 };
 
