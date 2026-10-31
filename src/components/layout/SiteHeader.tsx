@@ -72,8 +72,12 @@ export default function SiteHeader() {
                   href={item.href}
                   aria-current={isActive(item.href) ? "page" : undefined}
                   className={cn(
-                    "text-[15px] font-medium hover:text-navy-900",
-                    isActive(item.href) ? "text-navy-900" : "text-muted"
+                    // Underline indicator: amber for the current page, faint navy on hover.
+                    "relative py-2 text-[15px] font-medium transition-colors",
+                    "after:absolute after:inset-x-0 after:-bottom-0.5 after:h-[2px] after:origin-left after:rounded-full after:transition-transform after:duration-200",
+                    isActive(item.href)
+                      ? "text-navy-900 after:scale-x-100 after:bg-accent"
+                      : "text-muted after:scale-x-0 after:bg-navy-900/25 hover:text-navy-900 hover:after:scale-x-100"
                   )}
                 >
                   {item.label}
@@ -111,7 +115,10 @@ export default function SiteHeader() {
                     <Link
                       href={item.href}
                       aria-current={isActive(item.href) ? "page" : undefined}
-                      className="block py-4 font-display text-2xl font-semibold text-navy-900"
+                      className={cn(
+                        "-ml-5 block border-l-4 py-4 pl-4 font-display text-2xl font-semibold sm:-ml-8 sm:pl-7",
+                        isActive(item.href) ? "border-accent text-navy-900" : "border-transparent text-navy-700"
+                      )}
                     >
                       {item.label}
                     </Link>
