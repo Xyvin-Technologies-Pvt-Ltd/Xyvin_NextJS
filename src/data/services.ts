@@ -23,7 +23,7 @@ export const services: Service[] = [
       "Customer and partner portals",
       "Integrations with the systems you already use",
     ],
-    relatedProjects: ["financial-dashboard", "hef-platform"],
+    relatedProjects: ["hef", "family-tree"],
   },
   {
     slug: "web-development",
@@ -51,7 +51,7 @@ export const services: Service[] = [
       "Push notifications and offline support",
       "Admin panels and APIs behind the app",
     ],
-    relatedProjects: ["stoppick-app", "family-tree-app"],
+    relatedProjects: ["khedmah", "worko", "family-tree"],
   },
   {
     slug: "erp-development",

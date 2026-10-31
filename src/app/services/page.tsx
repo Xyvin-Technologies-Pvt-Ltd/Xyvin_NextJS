@@ -1,13 +1,11 @@
 import { pageMetadata } from "@/lib/metadata";
-import React from "react";
-import ServiceHero from "@/components/hero/ServiceHero";
-import ServicesGrid from "@/components/services/ServicesGrid";
-import ProcessFlow from "@/components/process/ProcessFlow";
-import TechStack from "@/components/tech/TechStack";
-import ContactCTA from "@/components/contact/ContactCTA";
-import Wrapper from "@/layouts/Wrapper";
-import ModernFooter from "@/layouts/footers/ModernFooter";
-import HeaderOne from "@/layouts/headers/HeaderOne";
+import PageHeader from "@/components/ui/PageHeader";
+import Section from "@/components/ui/Section";
+import SectionHeading from "@/components/ui/SectionHeading";
+import CtaBand from "@/components/ui/CtaBand";
+import ServiceList from "@/components/sections/ServiceList";
+import ProcessSteps from "@/components/sections/ProcessSteps";
+import TechList from "@/components/sections/TechList";
 
 export const metadata = pageMetadata({
   title: "Services",
@@ -16,20 +14,34 @@ export const metadata = pageMetadata({
   path: "/services",
 });
 
-const index = () => {
+export default function ServicesPage() {
   return (
-    <Wrapper>
-      <HeaderOne />
-      <div id="scrollsmoother-container">
-        <ServiceHero />
-        <ServicesGrid />
-        <ProcessFlow />
-        <TechStack />
-        <ContactCTA />
-        <ModernFooter />
-      </div>
-    </Wrapper>
+    <>
+      <PageHeader
+        breadcrumb={[{ label: "Services" }]}
+        title="Services"
+        intro="We build the software growing businesses run on, from websites and mobile apps to ERP systems and AI automation. One team handles design, development and support."
+      />
+      <Section aria-labelledby="services-list">
+        <h2 id="services-list" className="sr-only">
+          Our services
+        </h2>
+        <ServiceList />
+      </Section>
+      <Section tone="paper" aria-labelledby="process-heading">
+        <SectionHeading id="process-heading" label="How we work" title="From first call to launch" />
+        <ProcessSteps />
+      </Section>
+      <Section aria-labelledby="tech-heading">
+        <SectionHeading
+          id="tech-heading"
+          label="Technology"
+          title="Tools we work with"
+          intro="We pick the stack that suits your project and your team, not the other way round."
+        />
+        <TechList />
+      </Section>
+      <CtaBand />
+    </>
   );
-};
-
-export default index;
+}

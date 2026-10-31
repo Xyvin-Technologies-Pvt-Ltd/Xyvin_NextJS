@@ -1,12 +1,9 @@
 import { pageMetadata } from "@/lib/metadata";
-import React from "react";
-import PortfolioHero from "@/components/hero/PortfolioHero";
-import ProjectShowcase from "@/components/projects/ProjectShowcase";
-import TechStack from "@/components/tech/TechStack";
-import ContactCTA from "@/components/contact/ContactCTA";
-import Wrapper from "@/layouts/Wrapper";
-import ModernFooter from "@/layouts/footers/ModernFooter";
-import HeaderOne from "@/layouts/headers/HeaderOne";
+import projects from "@/data/projects";
+import PageHeader from "@/components/ui/PageHeader";
+import Section from "@/components/ui/Section";
+import CtaBand from "@/components/ui/CtaBand";
+import WorkGrid from "@/components/sections/WorkGrid";
 
 export const metadata = pageMetadata({
   title: "Our Work",
@@ -15,19 +12,18 @@ export const metadata = pageMetadata({
   path: "/work",
 });
 
-const index = () => {
+export default function WorkPage() {
   return (
-    <Wrapper>
-      <HeaderOne />
-      <div id="scrollsmoother-container">
-        <PortfolioHero />
-        <ProjectShowcase />
-        <TechStack />
-        <ContactCTA />
-        <ModernFooter />
-      </div>
-    </Wrapper>
+    <>
+      <PageHeader
+        breadcrumb={[{ label: "Work" }]}
+        title="Our work"
+        intro={`${projects.length} projects for businesses, associations and startups across India, the GCC and beyond: member portals, e-commerce stores, mobile apps and business platforms.`}
+      />
+      <Section>
+        <WorkGrid />
+      </Section>
+      <CtaBand title="Want results like these?" />
+    </>
   );
-};
-
-export default index;
+}

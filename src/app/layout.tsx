@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import "@/styles/index.scss";
+import "@/styles/globals.css";
 import ConsentBanner from "@/components/analytics/ConsentBanner";
-import WhatsAppButton from "@/components/sticky/Sticky";
+import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import StructuredData from "@/components/seo/StructuredData";
 import siteConfig from "@/data/site_config";
+import SiteShell from "@/components/layout/SiteShell";
 
 // Self-hosted variable fonts (Inter and Inter Tight, SIL Open Font License).
 const bodyFont = localFont({
@@ -48,7 +49,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" className={`${bodyFont.variable} ${headingFont.variable}`}>
       <body>
         <StructuredData type="organization" />
-        {children}
+        <SiteShell>{children}</SiteShell>
         <WhatsAppButton />
         <ConsentBanner />
       </body>

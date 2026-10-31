@@ -1,7 +1,3 @@
-import blog_img_1 from "@/assets/img/post_1.jpg";
-import blog_img_2 from "@/assets/img/post_2.jpg";
-import blog_img_3 from "@/assets/img/post_3.jpg";
-import { StaticImageData } from "next/image";
 
 
 interface BlogPost {
@@ -431,10 +427,27 @@ export const getPostsByCategory = (category: string): BlogPost[] => {
 export const getRelatedPosts = (currentSlug: string, limit: number = 3): BlogPost[] => {
   const currentPost = getBlogPost(currentSlug);
   if (!currentPost) return [];
+  const tags = new Set(currentPost.tags.map((t) => t.toLowerCase()));
 
+  // Rank other posts by shared tags (then same category), falling back to the newest posts.
   return blogPosts
-    .filter(post => post.slug !== currentSlug && post.category === currentPost.category)
-    .slice(0, limit);
+    .filter((post) => post.slug !== currentSlug)
+    .map((post) => ({
+      post,
+      score:
+        post.tags.filter((t) => tags.has(t.toLowerCase())).length * 2 +
+        (post.category === currentPost.category ? 1 : 0),
+    }))
+    .sort((a, b) => b.score - a.score || b.post.date.localeCompare(a.post.date))
+    .slice(0, limit)
+    .map(({ post }) => post);
 };
+
+export const formatPostDate = (date: string) =>
+  new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(
+    new Date(date)
+  );
+
+export type { BlogPost };
 
 export default blogPosts;
