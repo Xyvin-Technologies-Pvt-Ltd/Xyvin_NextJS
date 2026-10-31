@@ -29,7 +29,6 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
-  icons: { icon: "/assets/img/favicon.svg" },
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
