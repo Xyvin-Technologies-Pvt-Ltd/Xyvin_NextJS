@@ -39,13 +39,13 @@ const ServiceHero = () => {
               </div>
             </div>
             <div className="hero-actions">
-              <Link href="/Xyvin/contact" className="btn-primary">
+              <Link href="/contact" className="btn-primary">
                 <span className="btn-icon">
                   <Rocket size={18} />
                 </span>
                 Get Started Today
               </Link>
-              <Link href="/Xyvin/portfolio" className="btn-secondary">
+              <Link href="/work" className="btn-secondary">
                 <span className="btn-icon">
                   <Eye size={18} />
                 </span>

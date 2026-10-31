@@ -119,13 +119,13 @@ const HeroHomeOne = () => {
         {/* CTA Buttons */}
         <div className="hero-actions">
           <div className="hero-badge">
-            <Link href="/Xyvin/portfolio" className="btn-primary-ai">
+            <Link href="/work" className="btn-primary-ai">
               <Rocket size={16} className="btn-icon" />
               {currentData.cta}
             </Link>
           </div>
           <div className="hero-badge">
-            <Link href="/Xyvin/contact" className="btn-secondary-ai">
+            <Link href="/contact" className="btn-secondary-ai">
               <MessageSquare size={16} className="btn-icon" />
               Let's Talk AI
             </Link>

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import React from "react";
 import PortfolioHero from "@/components/hero/PortfolioHero";
 import ProjectShowcase from "@/components/projects/ProjectShowcase";
@@ -7,10 +8,12 @@ import Wrapper from "@/layouts/Wrapper";
 import ModernFooter from "@/layouts/footers/ModernFooter";
 import HeaderOne from "@/layouts/headers/HeaderOne";
 
-export const metadata = {
-  title: "Portfolio - Xyvin Technologies | Our Projects & Case Studies",
+export const metadata: Metadata = {
+  title: "Our Work",
   description:
-    "Explore our portfolio of successful IT projects including web development, mobile apps, ERP solutions, and AI/ML implementations.",
+    "Websites, platforms, portals and apps Xyvin Technologies has built for clients such as GOEC, KSSIA, Khedmah and Double Horse.",
+  alternates: { canonical: "/work" },
+  openGraph: { title: "Our Work", url: "/work" },
 };
 
 const index = () => {

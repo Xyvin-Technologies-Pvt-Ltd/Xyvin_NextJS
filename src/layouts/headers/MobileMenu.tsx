@@ -25,7 +25,7 @@ const menu_data: DataType[] = [
   {
     id: 2,
     title: "About",
-    link: "/Xyvin/about",
+    link: "/about",
     has_dropdown: false,
   },
   // {
@@ -70,34 +70,34 @@ const menu_data: DataType[] = [
 
     id: 3,
     title: "Advisory Board",
-    link: "/Xyvin/advisory-board",
+    link: "/about#advisors",
     has_dropdown: false,
   },
   {
 
     id: 4,
     title: "Services",
-    link: "/Xyvin/service",
+    link: "/services",
     has_dropdown: false,
     
   },
   {
     id: 5,
     title: "Portfolio",
-    link: "/Xyvin/portfolio",
+    link: "/work",
     has_dropdown: false,
     
   },
   {
     id: 6,
     title: "Blog",
-    link: "/Xyvin/blog",
+    link: "/blog",
     has_dropdown: false,
   },
   {
     id: 7,
     title: "Contact",
-    link: "/Xyvin/contact",
+    link: "/contact",
     has_dropdown: false,
   },
 ];

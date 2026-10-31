@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import React from "react";
 import HeaderOne from "@/layouts/headers/HeaderOne";
 import HeroHomeOne from "@/components/hero/HeroHomeOne";
@@ -9,10 +10,11 @@ import ModernFooter from "@/layouts/footers/ModernFooter";
 import Wrapper from "@/layouts/Wrapper";
 import BrandHomeOne from "@/components/brand/BrandHomeOne";
 
-export const metadata = {
-  title: "Xyvin Tech - Leading IT Solutions & Software Development",
+export const metadata: Metadata = {
   description:
-    "Transform your business with Xyvin's cutting-edge IT solutions, web development, and AI-powered software engineering services.",
+    "Xyvin Technologies builds custom software, web platforms, mobile apps, ERP systems and AI automation for growing businesses in India and the GCC.",
+  alternates: { canonical: "/" },
+  openGraph: { title: "Xyvin Technologies | Custom Software, Web & AI Solutions", url: "/" },
 };
 
 const index = () => {

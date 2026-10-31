@@ -108,7 +108,7 @@ const ServicesGrid = () => {
                   </div>
 
                   <div className="service-footer">
-                    <Link href="/Xyvin/service" className="service-link">
+                    <Link href="/services" className="service-link">
                       Learn More
                       <span className="link-arrow">→</span>
                     </Link>
@@ -137,7 +137,7 @@ const ServicesGrid = () => {
           </div>
           <div className="cta-button">
 
-          <Link href="/Xyvin/contact" >
+          <Link href="/contact" >
             Start Your Project
             <Rocket className="button-icon" size={20} />
           </Link>

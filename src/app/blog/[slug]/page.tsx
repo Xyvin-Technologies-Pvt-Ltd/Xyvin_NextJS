@@ -32,22 +32,18 @@ export async function generateMetadata({ params }: BlogDetailProps) {
   }
 
   return {
-    title: `${post.title} | Xyvin Technologies Blog`,
+    title: post.title,
     description: post.excerpt,
-    keywords: post.tags.join(", "),
+    alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       type: "article",
-      url: `https://xyvintech.com/blog/${post.slug}`,
+      url: `/blog/${post.slug}`,
       publishedTime: post.date,
       authors: [post.author],
       tags: post.tags,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt,
+      images: [{ url: post.image }],
     },
   };
 }

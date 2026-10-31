@@ -22,12 +22,12 @@ interface DataType {
 
 const menu_data: DataType[] = [
   { id: 1, title: "Home", link: "/", has_dropdown: false },
-  { id: 2, title: "About", link: "/Xyvin/about", has_dropdown: false },
-  { id: 3, title: "Advisory Board", link: "/Xyvin/advisory-board", has_dropdown: false },
-  { id: 4, title: "Services", link: "/Xyvin/service", has_dropdown: false },
-  { id: 5, title: "Portfolio", link: "/Xyvin/portfolio", has_dropdown: false },
-  { id: 6, title: "Blog", link: "/Xyvin/blog", has_dropdown: false },
-  { id: 7, title: "Contact", link: "/Xyvin/contact", has_dropdown: false },
+  { id: 2, title: "About", link: "/about", has_dropdown: false },
+  { id: 3, title: "Advisory Board", link: "/about#advisors", has_dropdown: false },
+  { id: 4, title: "Services", link: "/services", has_dropdown: false },
+  { id: 5, title: "Portfolio", link: "/work", has_dropdown: false },
+  { id: 6, title: "Blog", link: "/blog", has_dropdown: false },
+  { id: 7, title: "Contact", link: "/contact", has_dropdown: false },
 ];
 
 const HeaderOne = () => {

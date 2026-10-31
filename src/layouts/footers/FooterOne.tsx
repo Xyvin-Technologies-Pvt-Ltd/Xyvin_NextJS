@@ -25,11 +25,11 @@ India - 682018`,
 insight.`,
   links: [
     { title: `HOME`, link: "/" },
-    { title: `ABOUT`, link: "/Xyvin/about" },
-    { title: `SERVICES`, link: "/Xyvin/service" },
-    { title: `PORTFOLIO`, link: "/Xyvin/portfolio" },
-    // { title: `BLOG`, link: "/Xyvin/blog" },
-    { title: `CONTACT US`, link: "/Xyvin/contact" },
+    { title: `ABOUT`, link: "/about" },
+    { title: `SERVICES`, link: "/services" },
+    { title: `PORTFOLIO`, link: "/work" },
+    // { title: `BLOG`, link: "/blog" },
+    { title: `CONTACT US`, link: "/contact" },
   ]
 }
 const { footer_info, email, links, location, phone } = footer_data

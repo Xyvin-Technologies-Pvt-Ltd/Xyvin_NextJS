@@ -81,7 +81,7 @@ const TeamSection = () => {
             We're always looking for talented individuals to join our growing
             family.
           </p>
-          <a href="/Xyvin/contact" className="cta-button">
+          <a href="/contact" className="cta-button">
             Join Our Team
             <span className="button-arrow">→</span>
           </a>

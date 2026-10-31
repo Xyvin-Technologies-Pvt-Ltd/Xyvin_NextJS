@@ -107,7 +107,7 @@ const ProcessFlow = () => {
               Let's discuss your project and begin your digital transformation
               journey today.
             </p>
-            <a href="/Xyvin/contact" className="cta-button">
+            <a href="/contact" className="cta-button">
               Start Your Project
               <span className="button-arrow">→</span>
             </a>

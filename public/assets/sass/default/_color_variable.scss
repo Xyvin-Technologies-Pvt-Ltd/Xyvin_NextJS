@@ -19,8 +19,8 @@ $cr_banner: #f4f4f4;
 $accent: #8C2CF4;
 $gray_sc: #565656;
 :root {
-    --body-font-family: "Kanit", sans-serif;
-    --heading-font-family: "Inter Tight", sans-serif;
+    --body-font-family: var(--font-body), system-ui, sans-serif;
+    --heading-font-family: var(--font-heading), system-ui, sans-serif;
     --accent-color: #2E5ACE;
     --body-color: #454545;
     --heading-color: #01112F;

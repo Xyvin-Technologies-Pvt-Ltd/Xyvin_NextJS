@@ -56,12 +56,12 @@ export const siteConfig = {
 
   routes: {
     home: "/",
-    about: "/Xyvin/about",
-    advisors: "/Xyvin/advisory-board",
-    services: "/Xyvin/service",
-    work: "/Xyvin/portfolio",
-    blog: "/Xyvin/blog",
-    contact: "/Xyvin/contact",
+    about: "/about",
+    advisors: "/about#advisors",
+    services: "/services",
+    work: "/work",
+    blog: "/blog",
+    contact: "/contact",
     privacy: "/privacy",
     terms: "/terms",
   },

@@ -139,7 +139,7 @@ const ModernBlog = () => {
                       ))}
                     </div>
                     <Link
-                      href={`/Xyvin/blog/${post.slug}`}
+                      href={`/blog/${post.slug}`}
                       className="read-more"
                     >
                       Read Article →
@@ -187,7 +187,7 @@ const ModernBlog = () => {
                       </span>
                     ))}
                   </div>
-                  <Link href={`/Xyvin/blog/${post.slug}`} className="read-more">
+                  <Link href={`/blog/${post.slug}`} className="read-more">
                     Read More →
                   </Link>
                 </article>

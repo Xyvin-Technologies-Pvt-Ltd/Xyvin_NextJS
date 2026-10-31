@@ -66,7 +66,7 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ post }) => {
       <div className="blog-header-simple">
         <div className="container">
           <div className="header-content">
-            <Link href="/Xyvin/blog" className="back-button">
+            <Link href="/blog" className="back-button">
               <ArrowLeft size={18} />
               Back to Blog
             </Link>
@@ -212,7 +212,7 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ post }) => {
               {relatedPosts.map((relatedPost) => (
                 <Link
                   key={relatedPost.id}
-                  href={`/Xyvin/blog/${relatedPost.slug}`}
+                  href={`/blog/${relatedPost.slug}`}
                   className="related-card-simple"
                 >
                   <div className="related-image-wrapper">

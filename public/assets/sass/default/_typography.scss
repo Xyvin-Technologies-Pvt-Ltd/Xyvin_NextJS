@@ -3,7 +3,6 @@
 ----------------------------------------------------------------*/
 
 // Google Fonts
-@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;900&family=Kanit:wght@400;500;600;700&display=swap");
 html,
 body {
     color: var(--body-color);
@@ -28,11 +27,11 @@ h6 {
     font-weight: 700;
     line-height: 1.2em;
     color: var(--heading-color);
-    font-family: "Inter Tight", sans-serif;
+    font-family: var(--heading-font-family);
 }
 
 .cs_primary_font {
-    font-family: "Inter Tight", sans-serif;
+    font-family: var(--heading-font-family);
 }
 
 .cs_secondary_font {

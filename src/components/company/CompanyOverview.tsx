@@ -72,13 +72,13 @@ const CompanyOverview = () => {
             
             <div className="hero-actions">
               <button className="btn-primary">
-                <Link href="/Xyvin/service">
+                <Link href="/services">
                 Explore Our Solutions
                 </Link>
                 <ArrowRight size={18} />
               </button>
               <button className="btn-secondary">
-                <Link href="/Xyvin/contact">
+                <Link href="/contact">
                 Schedule Consultation
                 </Link>
               </button>

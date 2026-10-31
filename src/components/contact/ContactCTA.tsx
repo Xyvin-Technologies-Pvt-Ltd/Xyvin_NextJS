@@ -23,11 +23,11 @@ const ContactCTA = () => {
           </div>
 
           <div className="cta-actions">
-            <Link href="/Xyvin/contact" className="btn-primary">
+            <Link href="/contact" className="btn-primary">
               Get Free Consultation
               <span className="btn-arrow">→</span>
             </Link>
-            <Link href="/Xyvin/portfolio" className="btn-outline">
+            <Link href="/work" className="btn-outline">
               View Our Work
             </Link>
           </div>

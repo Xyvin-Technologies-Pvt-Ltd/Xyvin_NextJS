@@ -29,18 +29,18 @@ const ModernFooter: React.FC = () => {
 
   const footerSections = {
     services: [
-      { name: "Custom Software Development", href: "/Xyvin/service" },
-      { name: "Web Development", href: "/Xyvin/service" },
-      { name: "Mobile App Development", href: "/Xyvin/service" },
-      { name: "ERP Solutions", href: "/Xyvin/service" },
-      { name: "API Integration", href: "/Xyvin/service" },
-      { name: "AI & ML Services", href: "/Xyvin/service" },
+      { name: "Custom Software Development", href: "/services" },
+      { name: "Web Development", href: "/services" },
+      { name: "Mobile App Development", href: "/services" },
+      { name: "ERP Solutions", href: "/services" },
+      { name: "API Integration", href: "/services" },
+      { name: "AI & ML Services", href: "/services" },
     ] as FooterLink[],
     company: [
-      { name: "About Us", href: "/Xyvin/about" },
-      { name: "Our Portfolio", href: "/Xyvin/portfolio" },
-      { name: "Blog", href: "/Xyvin/blog" },
-      { name: "Contact Us", href: "/Xyvin/contact" },
+      { name: "About Us", href: "/about" },
+      { name: "Our Portfolio", href: "/work" },
+      { name: "Blog", href: "/blog" },
+      { name: "Contact Us", href: "/contact" },
     ] as FooterLink[],
   };
 
@@ -150,7 +150,7 @@ const ModernFooter: React.FC = () => {
                   })}
                 </div>
                 <div className="quick-contact">
-                  <Link href="/Xyvin/contact" className="contact-btn">
+                  <Link href="/contact" className="contact-btn">
                     <Rocket size={16} className="btn-icon" />
                     Get Started
                   </Link>

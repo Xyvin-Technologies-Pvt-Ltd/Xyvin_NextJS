@@ -286,10 +286,10 @@ const ProjectShowcase = () => {
             </p>
           </div>
           <div className="cta-actions">
-            <Link href="/Xyvin/portfolio" className="btn-outline">
+            <Link href="/work" className="btn-outline">
               View All Projects
             </Link>
-            <Link href="/Xyvin/contact" className="btn-primary">
+            <Link href="/contact" className="btn-primary">
               Start Your Project
               <span className="btn-arrow">→</span>
             </Link>
