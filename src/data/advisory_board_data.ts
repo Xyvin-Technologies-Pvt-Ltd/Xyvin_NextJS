@@ -11,7 +11,16 @@ interface AdvisoryBoardType {
 	bio: string;
 	expertise: string[];
 }
-
+//
+/**
+ * Advisory Board Data
+ * 
+ * This data is used to display the advisory board members on the website.
+ * 
+ * The data is stored in an array of objects, each object representing a member of the advisory board.
+ * 
+ * The data is used to display the advisory board members on the website.
+ */
 const advisory_board_data: AdvisoryBoardType[] = [
 	{
 		id: 1,
