@@ -10,7 +10,7 @@ import TechList from "@/components/sections/TechList";
 export const metadata = pageMetadata({
   title: "Services",
   description:
-    "Custom software, web development, mobile apps, ERP systems, API integration and AI automation from Xyvin Technologies in Kochi.",
+    "Custom software, web development, mobile apps, ERP systems, API integration and AI automation, designed and built by Xyvin Technologies for clients worldwide.",
   path: "/services",
 });
 
@@ -20,7 +20,7 @@ export default function ServicesPage() {
       <PageHeader
         breadcrumb={[{ label: "Services" }]}
         title="Services"
-        intro="We build the software growing businesses run on, from websites and mobile apps to ERP systems and AI automation. One team handles design, development and support."
+        intro="From a company website to a full ERP or an AI assistant, we handle design, development, launch and support, so one team is accountable for the result."
       />
       <Section aria-labelledby="services-list">
         <h2 id="services-list" className="sr-only">
@@ -29,7 +29,7 @@ export default function ServicesPage() {
         <ServiceList />
       </Section>
       <Section tone="paper" aria-labelledby="process-heading">
-        <SectionHeading id="process-heading" label="How we work" title="From first call to launch" />
+        <SectionHeading id="process-heading" label="How we work" title="From first call to launch, and beyond" />
         <ProcessSteps />
       </Section>
       <Section aria-labelledby="tech-heading">

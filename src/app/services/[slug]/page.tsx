@@ -63,7 +63,9 @@ export default async function ServicePage({ params }: Props) {
           </div>
           <div className="lg:col-span-5">
             <div className="rounded-lg border border-line bg-paper p-6 sm:p-8">
-              <h2 className="text-xl">What we deliver</h2>
+              <p className="text-sm font-medium text-muted">Ideal for</p>
+              <p className="mt-1 text-[15px] text-navy-900">{service.idealFor}</p>
+              <h2 className="mt-6 border-t border-line pt-6 text-xl">What we deliver</h2>
               <ul className="mt-5 space-y-3">
                 {service.deliverables.map((item) => (
                   <li key={item} className="flex gap-3 text-[15px]">

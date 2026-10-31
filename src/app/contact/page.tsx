@@ -10,7 +10,7 @@ import ContactForm from "@/components/contact/ContactForm";
 export const metadata = pageMetadata({
   title: "Contact Us",
   description:
-    "Talk to Xyvin Technologies about your software, web, mobile or AI project. Call, WhatsApp or send us a message and we'll reply within 24 hours.",
+    "Talk to Xyvin Technologies about your software, web, mobile or AI project. Call, WhatsApp or send a message from anywhere and we'll reply within 24 hours.",
   path: "/contact",
 });
 
@@ -18,7 +18,7 @@ const channels = [
   {
     icon: Phone,
     title: "Call us",
-    lines: [siteConfig.phone.display, siteConfig.hours],
+    lines: [siteConfig.phone.display, siteConfig.hours, "Calls outside these hours by appointment"],
     action: "Call now",
     href: siteConfig.phone.href,
   },
@@ -46,7 +46,7 @@ const channels = [
 ];
 
 const quickLinks = [
-  { title: "See our work", text: "Projects for GOEC, KSSIA, Khedmah and more", href: siteConfig.routes.work },
+  { title: "See our work", text: "Projects for clients on four continents", href: siteConfig.routes.work },
   { title: "Explore services", text: "Software, web, mobile, ERP and AI", href: siteConfig.routes.services },
   { title: "Read the blog", text: "Notes from our team", href: siteConfig.routes.blog },
   { title: "Meet the team", text: "Leadership and advisors", href: siteConfig.routes.about },
@@ -58,7 +58,7 @@ export default function ContactPage() {
       <PageHeader
         breadcrumb={[{ label: "Contact" }]}
         title="Let's talk about your project"
-        intro={`Tell us what you're working on. We'll reply ${siteConfig.responseTime} with questions, ideas and next steps. No obligation.`}
+        intro={`Wherever you are, we'll find a time that works. Tell us what you're building and we'll reply ${siteConfig.responseTime} with questions, ideas and next steps. No obligation.`}
       />
 
       <Section aria-labelledby="channels-heading">

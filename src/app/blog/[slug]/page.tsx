@@ -34,7 +34,14 @@ export async function generateMetadata({ params }: Props) {
   });
   return {
     ...meta,
-    openGraph: { ...meta.openGraph, type: "article", publishedTime: post.date, authors: [post.author], tags: post.tags },
+    openGraph: {
+      ...meta.openGraph,
+      type: "article",
+      publishedTime: post.date,
+      modifiedTime: post.updated ?? post.date,
+      authors: [post.author],
+      tags: post.tags,
+    },
   };
 }
 
@@ -57,7 +64,14 @@ export default async function BlogPostPage({ params }: Props) {
               </Link>
             </nav>
             <p className="text-sm text-muted">
-              {post.category} · <time dateTime={post.date}>{formatPostDate(post.date)}</time> · {post.readTime}
+              {post.category} · {post.readTime} ·{" "}
+              {post.updated ? (
+                <>
+                  Updated <time dateTime={post.updated}>{formatPostDate(post.updated)}</time>
+                </>
+              ) : (
+                <time dateTime={post.date}>{formatPostDate(post.date)}</time>
+              )}
             </p>
             <h1 className="mt-3 text-display-lg">{post.title}</h1>
             <p className="mt-5 text-lg text-muted">{post.excerpt}</p>

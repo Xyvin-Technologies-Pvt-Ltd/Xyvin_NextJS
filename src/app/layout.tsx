@@ -24,7 +24,7 @@ const headingFont = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: `${siteConfig.name} | Custom Software, Web & AI Solutions`,
+    default: `${siteConfig.name} | Software Development Company`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,

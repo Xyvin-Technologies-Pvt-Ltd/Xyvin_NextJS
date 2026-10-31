@@ -17,7 +17,7 @@ export const siteConfig = {
   legalName: "Xyvin Technologies Private Limited",
   siteUrl: "https://www.xyvin.com",
   description:
-    "Xyvin Technologies builds custom software, web platforms, ERP systems and AI automation for growing businesses in India and the GCC.",
+    "Xyvin Technologies is a software development company that designs, builds and supports web platforms, mobile apps, ERP systems and AI tools for businesses worldwide.",
   // TODO: confirm founding year (taken from the old structured data).
   foundedYear: 2019,
 
@@ -66,12 +66,17 @@ export const siteConfig = {
     terms: "/terms",
   },
 
-  // TODO: replace with verified figures before launch. These are the most conservative
-  // numbers that were already on the site.
-  stats: [
-    { value: "50+", label: "Projects delivered" },
-    { value: "50+", label: "Clients" },
-    { value: "2", label: "Offices: Kochi & Dubai" },
+  // Countries with Xyvin clients, shown on the world map. iso = ISO 3166-1 numeric code;
+  // lon/lat place the marker. TODO: add any countries missing from this list.
+  clientCountries: [
+    { name: "India", iso: "356", lon: 78.9, lat: 21.5 },
+    { name: "United Arab Emirates", iso: "784", lon: 54.4, lat: 24.2 },
+    { name: "Oman", iso: "512", lon: 57.5, lat: 21.5 },
+    { name: "United Kingdom", iso: "826", lon: -1.6, lat: 52.6 },
+    { name: "Belgium", iso: "056", lon: 4.5, lat: 50.6 },
+    { name: "United States", iso: "840", lon: -98.5, lat: 39.5 },
+    { name: "Singapore", iso: "702", lon: 103.8, lat: 1.35 },
+    { name: "Australia", iso: "036", lon: 134, lat: -25.5 },
   ],
 };
 
@@ -81,6 +86,8 @@ export const whatsappUrl = (message: string = siteConfig.whatsapp.message) =>
 export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
   `Mather Square, ${address.street}, ${address.city} ${address.postalCode}`
 )}`;
+
+export const countriesServed = `${siteConfig.clientCountries.length}+`;
 
 export const bookingHref = siteConfig.bookingUrl || siteConfig.routes.contact;
 

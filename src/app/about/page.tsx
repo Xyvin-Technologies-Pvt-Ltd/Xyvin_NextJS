@@ -1,12 +1,12 @@
 import { pageMetadata } from "@/lib/metadata";
-import siteConfig from "@/data/site_config";
+import siteConfig, { countriesServed } from "@/data/site_config";
 import team from "@/data/team_data";
 import advisors from "@/data/advisory_board_data";
 import testimonials from "@/data/testimonials";
 import PageHeader from "@/components/ui/PageHeader";
 import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Stats from "@/components/ui/Stats";
+import WorldMap from "@/components/sections/WorldMap";
 import LogoStrip from "@/components/ui/LogoStrip";
 import TestimonialCard from "@/components/ui/TestimonialCard";
 import ButtonLink from "@/components/ui/Button";
@@ -16,7 +16,7 @@ import PersonCard from "@/components/sections/PersonCard";
 export const metadata = pageMetadata({
   title: "About Us",
   description:
-    "Meet the team and advisors behind Xyvin Technologies, a software company in Kochi building web platforms, ERP systems and AI automation for clients in India and the GCC.",
+    "Meet the team and advisors behind Xyvin Technologies, a software development company in Kochi, India, building web platforms, apps and AI tools for clients worldwide.",
   path: "/about",
 });
 
@@ -25,11 +25,11 @@ export default function AboutPage() {
     <>
       <PageHeader
         breadcrumb={[{ label: "About" }]}
-        title="A software team from Kochi, working across India and the GCC"
-        intro={`${siteConfig.name} builds web platforms, mobile apps, ERP systems and AI automation for businesses, industry associations and startups.`}
+        title="A product engineering team from Kochi, building for clients worldwide"
+        intro={`We're designers, engineers and product people who build web platforms, mobile apps, ERP systems and AI tools for clients in ${countriesServed} countries.`}
       />
 
-      {/* Draft story for review: replace with your own words (how Xyvin started, what you believe, who you serve best). */}
+      {/* Draft story for review: adjust to your own words. */}
       <Section aria-labelledby="story-heading">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
@@ -39,23 +39,33 @@ export default function AboutPage() {
           </div>
           <div className="space-y-5 text-lg text-navy-800 lg:col-span-7">
             <p>
-              Xyvin started in Kochi with a simple idea: growing businesses deserve software that fits the way they
-              work, built by a team that stays around after launch.
+              Xyvin started in Kochi, India, with a simple belief: businesses deserve software that fits the way they
+              work, built by a team that sticks around after launch.
             </p>
             <p>
-              Today we work with trade associations like KSSIA and ITCC, consumer brands like Double Horse and myG, and
-              service businesses across the GCC.
+              Today we work with clients across India, the Middle East, Europe, Asia-Pacific and the United States,
+              including trade associations, consumer brands, healthcare providers and software companies. Whether you
+              bring a rough idea or an existing system that needs work, you get the same care.
             </p>
             <p>
-              Our team covers product design, web and mobile development, and AI. We keep projects small and focused,
-              show working software early, and are honest about what something will take.
+              We keep teams small, show working software early, and tell you plainly what something will take, even
+              when it&apos;s not what you hoped to hear.
             </p>
           </div>
         </div>
-        <Stats className="mt-16" />
       </Section>
 
-      <Section tone="paper" aria-labelledby="leadership-heading">
+      <Section tone="paper" aria-labelledby="reach-heading">
+        <SectionHeading
+          id="reach-heading"
+          label="Where we work"
+          title="Based in India, working worldwide"
+          intro="Our team works from Kochi, with a presence in Dubai. We share the working day with the Middle East and Asia-Pacific, overlap with European mornings, and schedule calls around clients in the Americas."
+        />
+        <WorldMap />
+      </Section>
+
+      <Section aria-labelledby="leadership-heading">
         <SectionHeading
           id="leadership-heading"
           label="Leadership"
@@ -79,7 +89,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section id="advisors" aria-labelledby="advisors-heading">
+      <Section id="advisors" tone="paper" aria-labelledby="advisors-heading">
         <SectionHeading
           id="advisors-heading"
           label="Advisory board"
@@ -102,7 +112,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section tone="paper" aria-labelledby="testimonials-heading">
+      <Section aria-labelledby="testimonials-heading">
         <SectionHeading id="testimonials-heading" label="Clients" title="What people say about working with us" />
         <div className="grid gap-6 md:grid-cols-2">
           {testimonials.map((t) => (
@@ -111,7 +121,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section aria-labelledby="clients-heading">
+      <Section tone="paper" aria-labelledby="clients-heading">
         <SectionHeading id="clients-heading" title="Clients and partners" />
         <LogoStrip limit={18} />
       </Section>

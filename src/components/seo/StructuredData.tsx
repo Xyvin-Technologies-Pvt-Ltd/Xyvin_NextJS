@@ -8,6 +8,7 @@ type BlogPostLike = {
   excerpt: string;
   slug: string;
   date: string;
+  updated?: string;
   author: string;
   image: string;
   tags: string[];
@@ -49,7 +50,7 @@ function buildData(props: Props) {
           addressCountry: siteConfig.address.country,
         },
         openingHours: "Mo-Fr 09:00-18:00",
-        areaServed: ["India", "United Arab Emirates", "Oman", "Saudi Arabia", "Qatar"],
+        areaServed: siteConfig.clientCountries.map((c) => c.name),
         sameAs: Object.values(siteConfig.socials),
       };
 
@@ -81,7 +82,7 @@ function buildData(props: Props) {
         author: { "@type": "Organization", name: post.author },
         publisher,
         datePublished: post.date,
-        dateModified: post.date,
+        dateModified: post.updated ?? post.date,
         mainEntityOfPage: url,
         url,
         keywords: post.tags.join(", "),
@@ -99,7 +100,7 @@ function buildData(props: Props) {
         description: service.description,
         url: absoluteUrl(`${siteConfig.routes.services}/${service.slug}`),
         provider: publisher,
-        areaServed: ["India", "United Arab Emirates", "Oman", "Saudi Arabia", "Qatar"],
+        areaServed: siteConfig.clientCountries.map((c) => c.name),
       };
     }
   }

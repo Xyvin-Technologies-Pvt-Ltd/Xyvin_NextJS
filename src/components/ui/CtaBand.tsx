@@ -8,8 +8,8 @@ interface CtaBandProps {
 }
 
 export default function CtaBand({
-  title = "Have a project in mind?",
-  text = `Tell us what you need. We'll reply ${siteConfig.responseTime} with next steps and an honest view of what it takes.`,
+  title = "Tell us what you're building",
+  text = `Share a few details and we'll reply ${siteConfig.responseTime} with questions, ideas and next steps. Wherever you are, we'll find a time that works.`,
 }: CtaBandProps) {
   return (
     <section className="bg-navy-900 py-16 text-white sm:py-20" aria-labelledby="cta-heading">

@@ -1,24 +1,22 @@
-import Image from "next/image";
-import heroImage from "@/assets/img/kssia 1.png";
 import { pageMetadata } from "@/lib/metadata";
-import siteConfig, { bookingHref } from "@/data/site_config";
+import siteConfig, { bookingHref, countriesServed } from "@/data/site_config";
 import { featuredProjects } from "@/data/projects";
 import { clientTestimonials } from "@/data/testimonials";
 import ButtonLink from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Stats from "@/components/ui/Stats";
 import LogoStrip from "@/components/ui/LogoStrip";
 import ProjectCard from "@/components/ui/ProjectCard";
 import TestimonialCard from "@/components/ui/TestimonialCard";
 import CtaBand from "@/components/ui/CtaBand";
 import ServiceList from "@/components/sections/ServiceList";
 import ProcessSteps from "@/components/sections/ProcessSteps";
+import WhyXyvin from "@/components/sections/WhyXyvin";
+import WorldMap from "@/components/sections/WorldMap";
 
 export const metadata = pageMetadata({
-  description:
-    "Xyvin Technologies builds custom software, web platforms, mobile apps, ERP systems and AI automation for growing businesses in India and the GCC.",
+  description: `Xyvin Technologies designs, builds and supports web platforms, mobile apps, ERP systems and AI tools for businesses worldwide. Clients in ${countriesServed} countries.`,
   path: "/",
 });
 
@@ -27,12 +25,11 @@ export default function HomePage() {
     <>
       <section className="pb-16 pt-32 sm:pb-24 sm:pt-40">
         <Container className="grid items-center gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-6">
-            <h1 className="text-display-xl">
-              Custom software, web &amp; AI automation for growing businesses
-            </h1>
-            <p className="mt-6 max-w-xl text-lg text-muted sm:text-xl">
-              A Kochi and Dubai team that designs, builds and supports web platforms, mobile apps and ERP systems for organisations across India and the GCC, including GOEC, KSSIA and Khedmah.
+          <div className="lg:col-span-5">
+            <h1 className="text-display-xl">We design and build software for businesses around the world</h1>
+            <p className="mt-6 text-lg text-muted sm:text-xl">
+              Web platforms, mobile apps, ERP systems and AI tools, from first idea to long after launch. One
+              accountable team in Kochi, India, working with clients in {countriesServed} countries.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href={bookingHref} track="booking" trackLocation="hero">
@@ -42,19 +39,9 @@ export default function HomePage() {
                 See our work
               </ButtonLink>
             </div>
-            <Stats className="mt-12" />
           </div>
-          <div className="lg:col-span-6">
-            <div className="relative aspect-square overflow-hidden rounded-lg border border-line bg-paper">
-              <Image
-                src={heroImage}
-                alt="Member portal Xyvin built for KSSIA, shown on a laptop and phone"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
+          <div className="lg:col-span-7">
+            <WorldMap />
           </div>
         </Container>
       </section>
@@ -62,7 +49,7 @@ export default function HomePage() {
       <section aria-labelledby="clients-heading" className="pb-16 sm:pb-24">
         <Container>
           <h2 id="clients-heading" className="mb-6 text-base font-medium text-muted">
-            Trusted by businesses and associations across India and the GCC
+            Trusted by startups, brands and associations across four continents
           </h2>
           <LogoStrip />
         </Container>
@@ -72,8 +59,8 @@ export default function HomePage() {
         <SectionHeading
           id="services-heading"
           label="What we do"
-          title="Software that fits how your business works"
-          intro="Six services, one team. Most clients start with one project and grow from there."
+          title="Everything you need to build and run a digital product"
+          intro="Design, development and support under one roof, so you work with one accountable team instead of juggling freelancers and agencies."
           action={
             <ButtonLink href={siteConfig.routes.services} variant="text" arrow>
               All services
@@ -87,7 +74,8 @@ export default function HomePage() {
         <SectionHeading
           id="work-heading"
           label="Selected work"
-          title="Recent projects"
+          title="Recent work"
+          intro="Platforms, online stores and apps we've shipped for clients in India, the Middle East, Europe and Australia."
           action={
             <ButtonLink href={siteConfig.routes.work} variant="text" arrow>
               See all work
@@ -101,17 +89,27 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section tone="paper" aria-labelledby="process-heading">
+      <Section tone="paper" aria-labelledby="why-heading">
+        <SectionHeading
+          id="why-heading"
+          label="Why Xyvin"
+          title="What working with us is like"
+          intro="No surprises. Here is what you can expect from the first call onwards."
+        />
+        <WhyXyvin />
+      </Section>
+
+      <Section aria-labelledby="process-heading">
         <SectionHeading
           id="process-heading"
           label="How we work"
-          title="A clear process, with no surprises"
-          intro="You see working software every two weeks and always know what's next."
+          title="How a project runs"
+          intro="Clear steps, honest estimates and working software every two weeks."
         />
         <ProcessSteps />
       </Section>
 
-      <Section aria-labelledby="testimonials-heading">
+      <Section tone="paper" aria-labelledby="testimonials-heading">
         <SectionHeading id="testimonials-heading" label="Clients" title="What our clients say" />
         <div className="grid gap-6 md:grid-cols-2">
           {clientTestimonials.map((t) => (

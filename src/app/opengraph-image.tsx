@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Xyvin Technologies: custom software, web and AI solutions";
+export const alt = "Xyvin Technologies: web platforms, apps and AI tools for businesses worldwide";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -27,9 +27,9 @@ export default function OpengraphImage() {
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           <div style={{ fontSize: 68, fontWeight: 700, lineHeight: 1.1, maxWidth: 960 }}>
-            Custom software, web &amp; AI automation for growing businesses
+            Web platforms, apps and AI tools for businesses worldwide
           </div>
-          <div style={{ fontSize: 30, color: "#c9cfdb" }}>Kochi · Dubai · India &amp; the GCC</div>
+          <div style={{ fontSize: 30, color: "#c9cfdb" }}>Software development · Kochi, India · Clients in 8+ countries</div>
         </div>
         <div style={{ fontSize: 28, color: "#F2A93B" }}>www.xyvin.com</div>
       </div>

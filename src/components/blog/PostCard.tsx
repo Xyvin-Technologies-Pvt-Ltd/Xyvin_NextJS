@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { formatPostDate, type BlogPost } from "@/data/blog_data";
+import type { BlogPost } from "@/data/blog_data";
 import siteConfig from "@/data/site_config";
 
 export default function PostCard({ post, priority }: { post: BlogPost; priority?: boolean }) {
@@ -18,7 +18,7 @@ export default function PostCard({ post, priority }: { post: BlogPost; priority?
           />
         </div>
         <p className="mt-4 text-sm text-muted">
-          {post.category} · <time dateTime={post.date}>{formatPostDate(post.date)}</time>
+          {post.category} · {post.readTime}
         </p>
         <h3 className="mt-1 text-xl group-hover:underline group-hover:underline-offset-4">{post.title}</h3>
         <p className="mt-2 text-[15px] text-muted">{post.excerpt}</p>
