@@ -20,8 +20,6 @@ const ContactCTA = () => {
               you achieve your business goals. Get in touch with us today for a
               free consultation.
             </p>
-
-           
           </div>
 
           <div className="cta-actions">

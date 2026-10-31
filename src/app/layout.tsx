@@ -1,4 +1,6 @@
 import "@/styles/index.scss";
+import ConsentBanner from "@/components/analytics/ConsentBanner";
+import WhatsAppButton from "@/components/sticky/Sticky";
 
 export default function RootLayout({
   children,
@@ -76,6 +78,8 @@ export default function RootLayout({
           </div>
         </div>
         {children}
+        <WhatsAppButton />
+        <ConsentBanner />
         <script
           dangerouslySetInnerHTML={{
             __html: `

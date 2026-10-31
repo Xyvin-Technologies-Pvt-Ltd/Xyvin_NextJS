@@ -7,7 +7,6 @@ import ProjectShowcase from "@/components/projects/ProjectShowcase";
 import ContactCTA from "@/components/contact/ContactCTA";
 import ModernFooter from "@/layouts/footers/ModernFooter";
 import Wrapper from "@/layouts/Wrapper";
-import Sticky from "@/components/sticky/Sticky";
 import BrandHomeOne from "@/components/brand/BrandHomeOne";
 
 export const metadata = {
@@ -32,7 +31,6 @@ const index = () => {
           <ModernFooter />
         </div>
       </Wrapper>
-      <Sticky />
     </>
   );
 };

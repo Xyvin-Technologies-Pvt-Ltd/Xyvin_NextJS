@@ -1,153 +1,165 @@
 "use client";
-import React, { useState } from "react";
-import { 
-  MapPin, 
-  Phone, 
-  MessageCircle, 
-  Mail, 
-  Users, 
-  CheckCircle, 
-  Send, 
+import React, { useRef, useState } from "react";
+import {
+  MapPin,
+  Phone,
+  MessageCircle,
+  Mail,
+  Users,
+  CheckCircle,
+  Send,
   Loader2,
   Eye,
   Settings,
   BookOpen,
-  Sparkles
+  Sparkles,
+  AlertCircle,
 } from "lucide-react";
+import siteConfig, { mapsUrl, whatsappUrl } from "@/data/site_config";
+import { contactServiceOptions } from "@/data/services";
+import { CONTACT_LIMITS, ContactErrors, ContactInput, normalizeContact, validateContact } from "@/lib/contact";
+import { trackEvent } from "@/lib/track";
 
 type CustomStyle = React.CSSProperties & {
   '--accent-color': string;
 }
 
+const emptyForm: ContactInput = {
+  name: "",
+  email: "",
+  phone: "",
+  company: "",
+  service: "",
+  message: "",
+};
+
+type SubmitStatus = "idle" | "success" | "error";
+
 const ModernContact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    service: "",
-    message: "",
-  });
-
+  const [formData, setFormData] = useState<ContactInput>(emptyForm);
+  const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState("idle");
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
+  const [errors, setErrors] = useState<ContactErrors>({});
+  const [serverError, setServerError] = useState("");
+  const startedAt = useRef(Date.now());
 
-  const handleChange = (e : any) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name as keyof ContactInput]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   };
 
-  const handleSubmit = async (e : any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setServerError("");
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus("success");
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        service: "",
-        message: "",
+    const clientErrors = validateContact(normalizeContact({ ...formData }));
+    if (Object.keys(clientErrors).length > 0) {
+      setErrors(clientErrors);
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          website: honeypot,
+          elapsedMs: Date.now() - startedAt.current,
+        }),
       });
-    }, 2000);
+      const result = await response.json().catch(() => ({}));
+
+      if (response.ok && result.ok) {
+        trackEvent("generate_lead", { service: formData.service || "Not specified" });
+        setSubmitStatus("success");
+        setFormData(emptyForm);
+        setErrors({});
+      } else if (result.errors) {
+        setErrors(result.errors);
+      } else {
+        setServerError(result.error || "Could not send your message.");
+        setSubmitStatus("error");
+      }
+    } catch {
+      setServerError("Could not send your message.");
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
     {
       icon: MapPin,
       title: "Our Office",
-      details: [
-        "67/440, 2nd Floor, Mather Square",
-        "Opp. North Railway Station",
-        "Kochi, Kerala, India - 682018",
-      ],
+      details: siteConfig.addressLines,
       action: "Get Directions",
-      link: "https://www.google.com/maps",
+      link: mapsUrl,
       color: "#45b7d1",
     },
     {
       icon: Phone,
       title: "Call Us",
-      details: [
-        "+91 813 891 6303",
-        "Mon - Fri: 9AM - 6PM IST",
-        "Response within 2 hours",
-      ],
+      details: [siteConfig.phone.display, siteConfig.hours],
       action: "Call Now",
-      link: "tel:+918138916303",
+      link: siteConfig.phone.href,
       color: "#4ecdc4",
     },
     {
       icon: MessageCircle,
       title: "WhatsApp",
-      details: [
-        "+91 813 891 6303",
-        "Quick support available",
-        "24/7 chat support",
-      ],
+      details: [siteConfig.phone.display, "Message us any time"],
       action: "Chat Now",
-      link: "https://wa.me/918138916303",
+      link: whatsappUrl(),
       color: "#45b7d1",
     },
     {
       icon: Mail,
       title: "Email Us",
-      details: [
-        "admin@xyvin.com",
-        "Business inquiries",
-        "Response within 24 hours",
-      ],
+      details: [siteConfig.email, `We reply ${siteConfig.responseTime}`],
       action: "Send Email",
-      link: "mailto:admin@xyvin.com",
+      link: `mailto:${siteConfig.email}`,
       color: "#4ecdc4",
     },
   ];
 
-  const services = [
-    "Custom Software Development",
-    "Web Development",
-    "Mobile App Development",
-    "ERP Solutions",
-    "API Integration",
-    "AI & ML Services",
-    "Cloud Solutions",
-    "IT Consulting",
-    "Other",
-  ];
+  const services = contactServiceOptions;
 
   const quickLinks = [
     {
       icon: Eye,
       title: "View Our Work",
       description: "Explore our portfolio",
-      href: "/Xyvin/portfolio",
+      href: siteConfig.routes.work,
       color: "#45b7d1"
     },
     {
       icon: Settings,
       title: "Explore Services",
       description: "Discover what we offer",
-      href: "/Xyvin/service",
+      href: siteConfig.routes.services,
       color: "#4ecdc4"
     },
     {
       icon: BookOpen,
       title: "Read Our Blog",
       description: "Latest insights & tips",
-      href: "/Xyvin/blog",
+      href: siteConfig.routes.blog,
       color: "#96c93d"
     },
     {
       icon: Users,
       title: "About Our Team",
       description: "Meet the experts",
-      href: "/Xyvin/about",
+      href: siteConfig.routes.about,
       color: "#ff6b6b"
     }
   ];
@@ -180,18 +192,12 @@ const ModernContact = () => {
                 digital transformation goals.
               </p>
               <div className="hero-stats">
-                <div className="stat">
-                  <div className="stat-number">50+</div>
-                  <div className="stat-label">Projects Completed</div>
-                </div>
-                <div className="stat">
-                  <div className="stat-number">24h</div>
-                  <div className="stat-label">Response Time</div>
-                </div>
-                <div className="stat">
-                  <div className="stat-number">100%</div>
-                  <div className="stat-label">Client Satisfaction</div>
-                </div>
+                {siteConfig.stats.map((stat) => (
+                  <div className="stat" key={stat.label}>
+                    <div className="stat-number">{stat.value}</div>
+                    <div className="stat-label">{stat.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -221,7 +227,14 @@ const ModernContact = () => {
                         <p key={idx}>{detail}</p>
                       ))}
                     </div>
-                    <a href={info.link} className="card-action">
+                    <a
+                      href={info.link}
+                      className="card-action"
+                      data-track-location="contact_card"
+                      {...(info.link.startsWith("http")
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                    >
                       {info.action} →
                     </a>
                   </div>
@@ -244,8 +257,8 @@ const ModernContact = () => {
                 </div>
                 <h2 className="section-title">Start Your Project</h2>
                 <p className="section-description">
-                  Fill out the form below and we'll get back to you within 24
-                  hours with a detailed proposal for your project.
+                  Tell us about your project and we&apos;ll get back to you{" "}
+                  {siteConfig.responseTime}.
                 </p>
               </div>
 
@@ -257,8 +270,8 @@ const ModernContact = () => {
                     </div>
                     <h3>Thank You!</h3>
                     <p>
-                      Your message has been sent successfully. We'll get back to
-                      you within 24 hours.
+                      Your message has been sent. We&apos;ll get back to you{" "}
+                      {siteConfig.responseTime}.
                     </p>
                     <button
                       className="btn-primary"
@@ -268,7 +281,7 @@ const ModernContact = () => {
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="contact-form">
+                  <form onSubmit={handleSubmit} className="contact-form" noValidate>
                     <div className="row">
                       <div className="col-md-6">
                         <div className="form-group">
@@ -280,10 +293,16 @@ const ModernContact = () => {
                               name="name"
                               value={formData.name}
                               onChange={handleChange}
+                              maxLength={CONTACT_LIMITS.name}
+                              aria-invalid={Boolean(errors.name)}
+                              aria-describedby={errors.name ? "name-error" : undefined}
                               required
                               placeholder="Your full name"
                             />
                           </div>
+                          {errors.name && (
+                            <p id="name-error" className="field-error">{errors.name}</p>
+                          )}
                         </div>
                       </div>
                       <div className="col-md-6">
@@ -296,10 +315,16 @@ const ModernContact = () => {
                               name="email"
                               value={formData.email}
                               onChange={handleChange}
+                              maxLength={CONTACT_LIMITS.email}
+                              aria-invalid={Boolean(errors.email)}
+                              aria-describedby={errors.email ? "email-error" : undefined}
                               required
                               placeholder="your.email@company.com"
                             />
                           </div>
+                          {errors.email && (
+                            <p id="email-error" className="field-error">{errors.email}</p>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -315,9 +340,15 @@ const ModernContact = () => {
                               name="phone"
                               value={formData.phone}
                               onChange={handleChange}
+                              maxLength={CONTACT_LIMITS.phone}
+                              aria-invalid={Boolean(errors.phone)}
+                              aria-describedby={errors.phone ? "phone-error" : undefined}
                               placeholder="+91 98765 43210"
                             />
                           </div>
+                          {errors.phone && (
+                            <p id="phone-error" className="field-error">{errors.phone}</p>
+                          )}
                         </div>
                       </div>
                       <div className="col-md-6">
@@ -330,9 +361,15 @@ const ModernContact = () => {
                               name="company"
                               value={formData.company}
                               onChange={handleChange}
+                              maxLength={CONTACT_LIMITS.company}
+                              aria-invalid={Boolean(errors.company)}
+                              aria-describedby={errors.company ? "company-error" : undefined}
                               placeholder="Your company name"
                             />
                           </div>
+                          {errors.company && (
+                            <p id="company-error" className="field-error">{errors.company}</p>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -354,6 +391,9 @@ const ModernContact = () => {
                           ))}
                         </select>
                       </div>
+                          {errors.service && (
+                            <p id="service-error" className="field-error">{errors.service}</p>
+                          )}
                     </div>
 
                     <div className="form-group">
@@ -364,12 +404,44 @@ const ModernContact = () => {
                           name="message"
                           value={formData.message}
                           onChange={handleChange}
+                          maxLength={CONTACT_LIMITS.message}
+                          aria-invalid={Boolean(errors.message)}
+                          aria-describedby={errors.message ? "message-error" : undefined}
                           required
                           rows={5}
                           placeholder="Tell us about your project requirements, timeline, and any specific needs..."
                         />
                       </div>
+                          {errors.message && (
+                            <p id="message-error" className="field-error">{errors.message}</p>
+                          )}
                     </div>
+
+                    <div className="hp-field" aria-hidden="true">
+                      <label htmlFor="website">Leave this field empty</label>
+                      <input
+                        type="text"
+                        id="website"
+                        name="website"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={honeypot}
+                        onChange={(e) => setHoneypot(e.target.value)}
+                      />
+                    </div>
+
+                    {submitStatus === "error" && serverError && (
+                      <div className="form-error" role="alert">
+                        <AlertCircle size={20} />
+                        <p>
+                          {serverError} Please try again, or reach us directly on{" "}
+                          <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+                            WhatsApp
+                          </a>{" "}
+                          or at <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+                        </p>
+                      </div>
+                    )}
 
                     <div className="form-actions">
                       <button
@@ -442,6 +514,42 @@ const ModernContact = () => {
       </div>
 
       <style jsx>{`
+        .field-error {
+          color: #b42318;
+          font-size: 0.875rem;
+          margin: 6px 0 0;
+        }
+
+        .form-error {
+          display: flex;
+          gap: 10px;
+          align-items: flex-start;
+          background: #fef3f2;
+          border: 1px solid #fecdca;
+          color: #b42318;
+          border-radius: 8px;
+          padding: 12px 14px;
+          margin-bottom: 20px;
+        }
+
+        .form-error p {
+          margin: 0;
+          font-size: 0.95rem;
+        }
+
+        .form-error a {
+          color: inherit;
+          text-decoration: underline;
+        }
+
+        .hp-field {
+          position: absolute;
+          left: -10000px;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+        }
+
         .modern-contact {
           padding-top: 80px;
         }

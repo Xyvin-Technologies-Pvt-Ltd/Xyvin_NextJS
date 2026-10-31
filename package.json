@@ -14,7 +14,7 @@
     "gsap": "^3.12.5",
     "http-proxy-middleware": "^3.0.0",
     "lucide-react": "^0.523.0",
-    "next": "^14.1.0",
+    "next": "^14.2.35",
     "react": "^18",
     "react-18-image-lightbox": "^5.1.4",
     "react-countup": "^6.5.0",
@@ -24,6 +24,7 @@
     "react-modal-image": "^2.6.0",
     "react-modal-video": "^2.0.1",
     "react-use": "^17.5.0",
+    "resend": "^6.37.0",
     "sass": "^1.70.0",
     "sharp": "^0.34.3",
     "swiper": "^11.0.5"
