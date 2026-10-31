@@ -13,7 +13,7 @@ interface AdvisoryBoardType {
 }
 //
 /**
- * Advisory Board Data
+ * Advisory Board Dat
  * 
  * This data is used to display the advisory board members on the website.
  * 
