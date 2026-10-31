@@ -49,7 +49,7 @@ export default function SiteHeader() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b bg-white/95 transition-colors",
+        "fixed inset-x-0 top-0 z-50 border-b bg-white transition-colors",
         scrolled || open ? "border-line" : "border-transparent"
       )}
     >
