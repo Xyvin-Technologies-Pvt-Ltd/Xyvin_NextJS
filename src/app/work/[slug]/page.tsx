@@ -9,7 +9,7 @@ import ButtonLink from "@/components/ui/Button";
 import CtaBand from "@/components/ui/CtaBand";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 // Case study pages exist only for projects with `caseStudy` filled in (src/data/projects.ts).
@@ -19,8 +19,9 @@ export function generateStaticParams() {
   return caseStudies.map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({ params }: Props) {
-  const project = getProject(params.slug);
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const project = getProject(slug);
   if (!project?.caseStudy) return {};
   return pageMetadata({
     title: `${project.title} case study`,
@@ -29,8 +30,9 @@ export function generateMetadata({ params }: Props) {
   });
 }
 
-export default function CaseStudyPage({ params }: Props) {
-  const project = getProject(params.slug);
+export default async function CaseStudyPage({ params }: Props) {
+  const { slug } = await params;
+  const project = getProject(slug);
   if (!project?.caseStudy) notFound();
   const { challenge, solution, results, quote, gallery = [] } = project.caseStudy;
 

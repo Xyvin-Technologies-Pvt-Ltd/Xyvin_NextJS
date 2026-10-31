@@ -13,7 +13,7 @@ import StructuredData from "@/components/seo/StructuredData";
 import Link from "next/link";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export const dynamicParams = false;
@@ -22,8 +22,9 @@ export function generateStaticParams() {
   return getAllBlogSlugs().map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: Props) {
-  const post = getBlogPost(params.slug);
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const post = getBlogPost(slug);
   if (!post) return {};
   const meta = pageMetadata({
     title: post.title,
@@ -37,8 +38,9 @@ export function generateMetadata({ params }: Props) {
   };
 }
 
-export default function BlogPostPage({ params }: Props) {
-  const post = getBlogPost(params.slug);
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = getBlogPost(slug);
   if (!post) notFound();
   const related = getRelatedPosts(post.slug, 3);
   const url = absoluteUrl(`${siteConfig.routes.blog}/${post.slug}`);

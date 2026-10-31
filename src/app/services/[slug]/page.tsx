@@ -14,7 +14,7 @@ import ProcessSteps from "@/components/sections/ProcessSteps";
 import StructuredData from "@/components/seo/StructuredData";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export const dynamicParams = false;
@@ -23,8 +23,9 @@ export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
 
-export function generateMetadata({ params }: Props) {
-  const service = getService(params.slug);
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const service = getService(slug);
   if (!service) return {};
   return pageMetadata({
     title: service.title,
@@ -33,8 +34,9 @@ export function generateMetadata({ params }: Props) {
   });
 }
 
-export default function ServicePage({ params }: Props) {
-  const service = getService(params.slug);
+export default async function ServicePage({ params }: Props) {
+  const { slug } = await params;
+  const service = getService(slug);
   if (!service) notFound();
 
   const related = service.relatedProjects.map(getProject).filter((p): p is Project => Boolean(p));
