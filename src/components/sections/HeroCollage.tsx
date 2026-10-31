@@ -24,8 +24,8 @@ function Tile({ project, label, priority }: { project: Project; label: string; p
           className="object-cover"
         />
       </div>
-      <figcaption className="absolute bottom-3 left-3 rounded-md bg-white px-2.5 py-1 text-xs font-medium text-navy-900">
-        {project.title} <span className="text-muted">· {label}</span>
+      <figcaption className="absolute bottom-2 left-2 rounded-md bg-white px-2 py-1 text-xs font-medium text-navy-900 sm:bottom-3 sm:left-3 sm:px-2.5">
+        {project.title} <span className="hidden text-muted sm:inline">· {label}</span>
       </figcaption>
     </figure>
   );
