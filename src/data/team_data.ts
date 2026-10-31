@@ -31,10 +31,10 @@ const team_data: DataType[] = [
 	},
 	{
 		id: 4,
-		img: "/assets/img/team/Team_4.png",
-		avatar_name: "Ramees",
-		designation: "Chief Marketing Officer",
-		linkedin: "https://www.linkedin.com/in/ramees-a-b379b7247/"
+		img: "/assets/img/team/Team_rashin.png",
+		avatar_name: "Rashin",
+		designation: "Head of Operations",
+		linkedin: "#"
 	},
 	// {
 	// 	id: 5,
