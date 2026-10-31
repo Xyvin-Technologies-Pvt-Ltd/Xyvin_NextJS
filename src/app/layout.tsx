@@ -1,15 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Inter_Tight } from "next/font/google";
+import localFont from "next/font/local";
 import "@/styles/index.scss";
 import ConsentBanner from "@/components/analytics/ConsentBanner";
 import WhatsAppButton from "@/components/sticky/Sticky";
 import StructuredData from "@/components/seo/StructuredData";
 import siteConfig from "@/data/site_config";
 
-const bodyFont = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
-const headingFont = Inter_Tight({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+// Self-hosted variable fonts (Inter and Inter Tight, SIL Open Font License).
+const bodyFont = localFont({
+  src: "../fonts/inter-latin.woff2",
+  weight: "100 900",
+  variable: "--font-body",
+  display: "swap",
+});
+const headingFont = localFont({
+  src: "../fonts/inter-tight-latin.woff2",
+  weight: "100 900",
   variable: "--font-heading",
   display: "swap",
 });
