@@ -24,7 +24,7 @@ export const services: Service[] = [
       "Customer, partner and member portals",
       "Ongoing support and improvements after launch",
     ],
-    relatedProjects: ["hef", "family-tree"],
+    relatedProjects: ["kangaroo-care", "hef", "family-tree"],
   },
   {
     slug: "web-development",
@@ -39,7 +39,7 @@ export const services: Service[] = [
       "Web applications and member portals",
       "CMS setup, SEO foundations and team training",
     ],
-    relatedProjects: ["liva-insurance", "kangaroo-care", "exctel"],
+    relatedProjects: ["international-academy-of-osteopathy", "continuity-business-solutions", "atlantis-medical"],
   },
   {
     slug: "mobile-apps",
@@ -69,7 +69,7 @@ export const services: Service[] = [
       "Billing, finance and HR",
       "Reports and management dashboards",
     ],
-    relatedProjects: [], // TODO: add ERP projects
+    relatedProjects: ["exctel"],
   },
   {
     slug: "api-integration",

@@ -31,7 +31,7 @@ export default function SiteFooter() {
           <Image src={logoWhite} alt={siteConfig.name} width={64} height={56} />
           <p className="mt-5 max-w-xs text-[15px] leading-relaxed">
             Software development partner for businesses worldwide. Web platforms, mobile apps, ERP systems and AI
-            tools, designed and built in Kochi, India.
+            tools.
           </p>
           <address className="mt-6 text-[15px] not-italic leading-relaxed">
             <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>

@@ -21,7 +21,6 @@ interface GlobeProps {
   markers: GlobeMarker[];
   focus?: GlobeFocus | null;
   className?: string;
-  onPhiChange?: (phi: number) => void;
 }
 
 const INITIAL = locationToAngles(20, 60);
@@ -76,7 +75,7 @@ function toCobeArcs(markers: GlobeMarker[]) {
   }));
 }
 
-export default function Globe({ theme, markers, focus, className, onPhiChange }: GlobeProps) {
+export default function Globe({ theme, markers, focus, className }: GlobeProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [ready, setReady] = useState(false);
@@ -90,11 +89,9 @@ export default function Globe({ theme, markers, focus, className, onPhiChange }:
   const visibleRef = useRef(true);
   const globeRef = useRef<ReturnType<typeof createGlobe> | null>(null);
   const sizeRef = useRef(400);
-  const onPhiChangeRef = useRef(onPhiChange);
   const focusRef = useRef(focus);
   const markersRef = useRef(markers);
 
-  onPhiChangeRef.current = onPhiChange;
   focusRef.current = focus;
   markersRef.current = markers;
 
@@ -186,8 +183,6 @@ export default function Globe({ theme, markers, focus, className, onPhiChange }:
         phiRef.current += 0.004;
       }
 
-      onPhiChangeRef.current?.(phiRef.current);
-
       const size = sizeRef.current;
       const m = markersRef.current;
       globeRef.current.update({
@@ -262,5 +257,3 @@ export default function Globe({ theme, markers, focus, className, onPhiChange }:
     </div>
   );
 }
-
-export { nearestCountryIndex, phiToLon } from "@/lib/globe-utils";

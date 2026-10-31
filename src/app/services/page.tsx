@@ -20,7 +20,6 @@ export default function ServicesPage() {
       <PageHeader
         breadcrumb={[{ label: "Services" }]}
         title="Services"
-        intro="From a company website to a full ERP or an AI assistant, we handle design, development, launch and support, so one team is accountable for the result."
       />
       <Section aria-labelledby="services-list">
         <h2 id="services-list" className="sr-only">

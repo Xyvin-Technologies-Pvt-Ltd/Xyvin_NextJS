@@ -16,7 +16,7 @@ import PersonCard from "@/components/sections/PersonCard";
 export const metadata = pageMetadata({
   title: "About Us",
   description:
-    "Meet the team and advisors behind Xyvin Technologies, a software development company in Kochi, India, building web platforms, apps and AI tools for clients worldwide.",
+    "Meet the team and advisors behind Xyvin Technologies, building web platforms, apps and AI tools for clients worldwide.",
   path: "/about",
 });
 
@@ -25,7 +25,7 @@ export default function AboutPage() {
     <>
       <PageHeader
         breadcrumb={[{ label: "About" }]}
-        title="A product engineering team from Kochi, building for clients worldwide"
+        title="A product engineering team building for clients worldwide"
         intro={`We're designers, engineers and product people who build web platforms, mobile apps, ERP systems and AI tools for clients in ${countriesServed} countries.`}
       />
 
@@ -57,7 +57,7 @@ export default function AboutPage() {
 
       <GlobalPresence
         title="Based in India, working worldwide"
-        intro="Our team works from Kochi, with a presence in Dubai. We share the working day with the Middle East and Asia-Pacific, overlap with European mornings, and schedule calls around clients in the Americas."
+        intro="We have a presence in India and Dubai. We work around all time zones for clients in the Middle East, Asia-Pacific, Europe, the Americas and beyond."
       />
 
       <Section aria-labelledby="leadership-heading">

@@ -15,8 +15,8 @@ export const industries: Industry[] = [
     slug: "loyalty",
     name: "Loyalty",
     summary: "Points, rewards and membership programmes that keep customers coming back.",
-    clients: [], // TODO: add clients once a loyalty project is on the site
-    projectSlugs: [],
+    clients: ["Liva"],
+    projectSlugs: ["liva-insurance"],
   },
   {
     slug: "ev-charging",

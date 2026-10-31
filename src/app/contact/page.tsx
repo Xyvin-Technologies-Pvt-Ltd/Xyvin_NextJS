@@ -58,7 +58,7 @@ export default function ContactPage() {
       <PageHeader
         breadcrumb={[{ label: "Contact" }]}
         title="Let's talk about your project"
-        intro={`Wherever you are, we'll find a time that works. Tell us what you're building and we'll reply ${siteConfig.responseTime} with questions, ideas and next steps. No obligation.`}
+        intro={`Wherever you are, we'll find a time that works. Tell us what you're building and we'll reply ${siteConfig.responseTime} with questions, ideas and next steps.`}
       />
 
       <Section aria-labelledby="channels-heading">

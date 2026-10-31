@@ -29,7 +29,7 @@ export default function OpengraphImage() {
           <div style={{ fontSize: 68, fontWeight: 700, lineHeight: 1.1, maxWidth: 960 }}>
             Web platforms, apps and AI tools for businesses worldwide
           </div>
-          <div style={{ fontSize: 30, color: "#c9cfdb" }}>Software development · Kochi, India · Clients in 8+ countries</div>
+          <div style={{ fontSize: 30, color: "#c9cfdb" }}>Software development · Clients in 8+ countries</div>
         </div>
         <div style={{ fontSize: 28, color: "#F2A93B" }}>www.xyvin.com</div>
       </div>

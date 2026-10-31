@@ -8,6 +8,7 @@ import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
 import LogoStrip from "@/components/ui/LogoStrip";
 import ProjectCard from "@/components/ui/ProjectCard";
+import Carousel from "@/components/ui/Carousel";
 import TestimonialCard from "@/components/ui/TestimonialCard";
 import CtaBand from "@/components/ui/CtaBand";
 import ServiceList from "@/components/sections/ServiceList";
@@ -49,7 +50,7 @@ export default function HomePage() {
             </h1>
             <p className="mt-8 max-w-xl text-lg text-muted sm:text-xl">
               Web platforms, mobile apps, ERP systems and AI tools, from first idea to long after launch. One
-              accountable team in Kochi, India, working with clients in {countriesServed} countries.
+              accountable team, working with clients in {countriesServed} countries.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <ButtonLink href={bookingHref} track="booking" trackLocation="hero">
@@ -69,7 +70,7 @@ export default function HomePage() {
       <section aria-labelledby="clients-heading" className="py-16 sm:py-24">
         <Container>
           <h2 id="clients-heading" className="mb-6 text-base font-medium text-muted">
-            Trusted by startups, brands and associations across four continents
+            Trusted by teams around the world
           </h2>
           <LogoStrip />
         </Container>
@@ -100,7 +101,7 @@ export default function HomePage() {
         <IndustryGrid />
       </Section>
 
-      <Section tone="paper" aria-labelledby="work-heading">
+      <Section tone="paper" className="overflow-x-clip" aria-labelledby="work-heading">
         <SectionHeading
           id="work-heading"
           label="Selected work"
@@ -112,11 +113,11 @@ export default function HomePage() {
             </ButtonLink>
           }
         />
-        <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        <Carousel label="Recent work" autoScroll={30} fullBleed>
           {featuredProjects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
-        </div>
+        </Carousel>
       </Section>
 
       <Section aria-labelledby="why-heading">

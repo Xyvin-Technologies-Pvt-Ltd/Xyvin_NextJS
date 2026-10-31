@@ -19,7 +19,7 @@ export default function GlobalPresence({ title = "Our global presence", intro }:
             {title}
           </h2>
           <p className="mt-4 text-lg font-medium uppercase tracking-wide text-navy-200">
-            {continentsServed} continents · {countriesServed} countries · One team in Kochi
+            {continentsServed} continents · {countriesServed} countries · One team
           </p>
           {intro && <p className="mt-4 text-lg text-navy-200">{intro}</p>}
         </div>

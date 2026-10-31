@@ -13,7 +13,7 @@ const reasons = [
   },
   {
     title: "Works across time zones",
-    text: "From Kochi we share the working day with the Middle East and Asia-Pacific and overlap with European mornings. For the Americas, we schedule calls around you.",
+    text: "We work around all time zones. Whether your team is in the Middle East, Asia-Pacific, Europe or the Americas, we find hours that work for everyone.",
   },
 ];
 

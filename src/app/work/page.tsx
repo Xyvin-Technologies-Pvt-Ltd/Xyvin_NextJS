@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import { pageMetadata } from "@/lib/metadata";
-import projects from "@/data/projects";
 import PageHeader from "@/components/ui/PageHeader";
 import Section from "@/components/ui/Section";
 import CtaBand from "@/components/ui/CtaBand";
@@ -19,7 +18,6 @@ export default function WorkPage() {
       <PageHeader
         breadcrumb={[{ label: "Work" }]}
         title="Our work"
-        intro={`A selection of ${projects.length} projects for clients in India, the Middle East, Europe, Singapore and Australia: company websites, member portals, online stores, mobile apps and business platforms.`}
       />
       <Section aria-labelledby="projects-heading">
         <h2 id="projects-heading" className="sr-only">

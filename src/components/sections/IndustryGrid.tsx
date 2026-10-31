@@ -14,12 +14,6 @@ export default function IndustryGrid() {
             <Link href={href} className="group flex h-full flex-col p-4 hover:bg-paper sm:p-6">
               <h3 className="text-base sm:text-lg">{industry.name}</h3>
               <p className="mt-2 hidden flex-1 text-[15px] text-muted sm:block">{industry.summary}</p>
-              {industry.clients.length > 0 && (
-                <p className="mt-2 flex-1 text-sm text-navy-800 sm:mt-4 sm:flex-none">
-                  <span className="text-muted">Clients include </span>
-                  {industry.clients.join(", ")}
-                </p>
-              )}
               <span className="mt-auto inline-flex items-center gap-2 pt-4 text-sm font-semibold text-navy-900 sm:pt-5">
                 {hasProjects ? "See projects" : "Talk to us"}
                 <ArrowRight size={16} aria-hidden="true" className="transition-transform group-hover:translate-x-0.5" />
