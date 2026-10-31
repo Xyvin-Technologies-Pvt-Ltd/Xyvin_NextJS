@@ -20,7 +20,10 @@ export default function WorkPage() {
         title="Our work"
         intro={`${projects.length} projects for businesses, associations and startups across India, the GCC and beyond: member portals, e-commerce stores, mobile apps and business platforms.`}
       />
-      <Section>
+      <Section aria-labelledby="projects-heading">
+        <h2 id="projects-heading" className="sr-only">
+          All projects
+        </h2>
         <WorkGrid />
       </Section>
       <CtaBand title="Want results like these?" />
