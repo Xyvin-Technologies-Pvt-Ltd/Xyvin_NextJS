@@ -34,7 +34,7 @@ const team_data: DataType[] = [
 		img: "/assets/img/team/Team_rashin.png",
 		avatar_name: "Rashin",
 		designation: "Head of Operations",
-		linkedin: "#"
+		linkedin: "https://www.linkedin.com/in/rashinp/"
 	},
 	// {
 	// 	id: 5,
