@@ -6,7 +6,7 @@ import testimonials from "@/data/testimonials";
 import PageHeader from "@/components/ui/PageHeader";
 import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
-import WorldMap from "@/components/sections/WorldMap";
+import GlobalPresence from "@/components/sections/GlobalPresence";
 import LogoStrip from "@/components/ui/LogoStrip";
 import TestimonialCard from "@/components/ui/TestimonialCard";
 import ButtonLink from "@/components/ui/Button";
@@ -55,15 +55,10 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section tone="paper" aria-labelledby="reach-heading">
-        <SectionHeading
-          id="reach-heading"
-          label="Where we work"
-          title="Based in India, working worldwide"
-          intro="Our team works from Kochi, with a presence in Dubai. We share the working day with the Middle East and Asia-Pacific, overlap with European mornings, and schedule calls around clients in the Americas."
-        />
-        <WorldMap />
-      </Section>
+      <GlobalPresence
+        title="Based in India, working worldwide"
+        intro="Our team works from Kochi, with a presence in Dubai. We share the working day with the Middle East and Asia-Pacific, overlap with European mornings, and schedule calls around clients in the Americas."
+      />
 
       <Section aria-labelledby="leadership-heading">
         <SectionHeading

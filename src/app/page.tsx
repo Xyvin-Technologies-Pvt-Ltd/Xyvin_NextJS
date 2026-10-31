@@ -13,7 +13,7 @@ import CtaBand from "@/components/ui/CtaBand";
 import ServiceList from "@/components/sections/ServiceList";
 import ProcessSteps from "@/components/sections/ProcessSteps";
 import WhyXyvin from "@/components/sections/WhyXyvin";
-import WorldMap from "@/components/sections/WorldMap";
+import GlobalPresence from "@/components/sections/GlobalPresence";
 
 export const metadata = pageMetadata({
   description: `Xyvin Technologies designs, builds and supports web platforms, mobile apps, ERP systems and AI tools for businesses worldwide. Clients in ${countriesServed} countries.`,
@@ -23,15 +23,15 @@ export const metadata = pageMetadata({
 export default function HomePage() {
   return (
     <>
-      <section className="pb-16 pt-32 sm:pb-24 sm:pt-40">
-        <Container className="grid items-center gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <h1 className="text-display-xl">We design and build software for businesses around the world</h1>
-            <p className="mt-6 text-lg text-muted sm:text-xl">
+      <section className="pb-16 pt-36 sm:pb-24 sm:pt-44">
+        <Container>
+          <h1 className="max-w-4xl text-display-xl">We design and build software for businesses around the world</h1>
+          <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-end">
+            <p className="text-lg text-muted sm:text-xl lg:col-span-7">
               Web platforms, mobile apps, ERP systems and AI tools, from first idea to long after launch. One
               accountable team in Kochi, India, working with clients in {countriesServed} countries.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="flex flex-wrap items-center gap-3 lg:col-span-5 lg:justify-end">
               <ButtonLink href={bookingHref} track="booking" trackLocation="hero">
                 Book a free consultation
               </ButtonLink>
@@ -40,13 +40,12 @@ export default function HomePage() {
               </ButtonLink>
             </div>
           </div>
-          <div className="lg:col-span-7">
-            <WorldMap />
-          </div>
         </Container>
       </section>
 
-      <section aria-labelledby="clients-heading" className="pb-16 sm:pb-24">
+      <GlobalPresence />
+
+      <section aria-labelledby="clients-heading" className="py-16 sm:py-24">
         <Container>
           <h2 id="clients-heading" className="mb-6 text-base font-medium text-muted">
             Trusted by startups, brands and associations across four continents

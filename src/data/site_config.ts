@@ -66,17 +66,18 @@ export const siteConfig = {
     terms: "/terms",
   },
 
-  // Countries with Xyvin clients, shown on the world map. iso = ISO 3166-1 numeric code;
-  // lon/lat place the marker. TODO: add any countries missing from this list.
+  // Countries with Xyvin clients, shown on the global presence map.
+  // iso = ISO 3166-1 numeric code; lon/lat place the pin; stem = pin height (to keep nearby pins apart);
+  // clients = optional names shown when the country is selected. TODO: add missing countries and clients.
   clientCountries: [
-    { name: "India", iso: "356", lon: 78.9, lat: 21.5 },
-    { name: "United Arab Emirates", iso: "784", lon: 54.4, lat: 24.2 },
-    { name: "Oman", iso: "512", lon: 57.5, lat: 21.5 },
-    { name: "United Kingdom", iso: "826", lon: -1.6, lat: 52.6 },
-    { name: "Belgium", iso: "056", lon: 4.5, lat: 50.6 },
-    { name: "United States", iso: "840", lon: -98.5, lat: 39.5 },
-    { name: "Singapore", iso: "702", lon: 103.8, lat: 1.35 },
-    { name: "Australia", iso: "036", lon: 134, lat: -25.5 },
+    { name: "India", iso: "356", lon: 77.5, lat: 20.5, continent: "Asia", stem: 70, clients: ["KSSIA", "GOEC", "Double Horse", "myG"] },
+    { name: "United Arab Emirates", short: "UAE", iso: "784", lon: 54.4, lat: 24.2, continent: "Asia", stem: 105, clients: ["Basari Opticals"] },
+    { name: "Oman", iso: "512", lon: 57.5, lat: 21.5, continent: "Asia", stem: 55, clients: ["Continuity Oman"] },
+    { name: "United Kingdom", short: "UK", iso: "826", lon: -1.6, lat: 52.6, continent: "Europe", stem: 92, clients: [] as string[] },
+    { name: "Belgium", iso: "056", lon: 4.5, lat: 50.6, continent: "Europe", stem: 46, clients: [] as string[] },
+    { name: "United States", short: "USA", iso: "840", lon: -96, lat: 38.5, continent: "North America", stem: 70, clients: [] as string[] },
+    { name: "Singapore", iso: "702", lon: 103.8, lat: 1.35, continent: "Asia", stem: 70, clients: [] as string[] },
+    { name: "Australia", iso: "036", lon: 144.9, lat: -37.8, continent: "Australia", stem: 70, clients: ["Atlantis Medical"] },
   ],
 };
 
@@ -88,6 +89,7 @@ export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encode
 )}`;
 
 export const countriesServed = `${siteConfig.clientCountries.length}+`;
+export const continentsServed = new Set(siteConfig.clientCountries.map((c) => c.continent)).size;
 
 export const bookingHref = siteConfig.bookingUrl || siteConfig.routes.contact;
 
