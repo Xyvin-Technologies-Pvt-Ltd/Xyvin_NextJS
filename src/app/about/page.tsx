@@ -39,8 +39,8 @@ export default function AboutPage() {
           </div>
           <div className="space-y-5 text-lg text-navy-800 lg:col-span-7">
             <p>
-              Xyvin started in Kochi, India, with a simple belief: businesses deserve software that fits the way they
-              work, built by a team that sticks around after launch.
+              Xyvin started in Trivandrum, in founder Ashin Amanulla&apos;s home, with a simple belief: businesses
+              deserve software that fits the way they work, built by a team that sticks around after launch.
             </p>
             <p>
               Today we work with clients across India, the Middle East, Europe, Asia-Pacific and the United States,

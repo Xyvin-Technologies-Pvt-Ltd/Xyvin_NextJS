@@ -14,6 +14,7 @@ import ServiceList from "@/components/sections/ServiceList";
 import ProcessSteps from "@/components/sections/ProcessSteps";
 import WhyXyvin from "@/components/sections/WhyXyvin";
 import GlobalPresence from "@/components/sections/GlobalPresence";
+import HeroCollage from "@/components/sections/HeroCollage";
 
 export const metadata = pageMetadata({
   description: `Xyvin Technologies designs, builds and supports web platforms, mobile apps, ERP systems and AI tools for businesses worldwide. Clients in ${countriesServed} countries.`,
@@ -23,15 +24,34 @@ export const metadata = pageMetadata({
 export default function HomePage() {
   return (
     <>
-      <section className="pb-16 pt-36 sm:pb-24 sm:pt-44">
-        <Container>
-          <h1 className="max-w-4xl text-display-xl">We design and build software for businesses around the world</h1>
-          <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-end">
-            <p className="text-lg text-muted sm:text-xl lg:col-span-7">
+      <section className="overflow-hidden pb-16 pt-32 sm:pb-24 sm:pt-40">
+        <Container className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-6">
+            <h1 className="text-display-xl">
+              We design and build software for businesses{" "}
+              <span className="relative inline-block whitespace-nowrap">
+                around the world
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 300 14"
+                  preserveAspectRatio="none"
+                  className="absolute -bottom-2 left-0 h-3 w-full sm:-bottom-3 sm:h-4"
+                >
+                  <path
+                    d="M3 10 C 70 3, 140 2, 205 6 S 275 11, 297 5"
+                    fill="none"
+                    stroke="#f2a93b"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+            </h1>
+            <p className="mt-8 max-w-xl text-lg text-muted sm:text-xl">
               Web platforms, mobile apps, ERP systems and AI tools, from first idea to long after launch. One
               accountable team in Kochi, India, working with clients in {countriesServed} countries.
             </p>
-            <div className="flex flex-wrap items-center gap-3 lg:col-span-5 lg:justify-end">
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <ButtonLink href={bookingHref} track="booking" trackLocation="hero">
                 Book a free consultation
               </ButtonLink>
@@ -39,6 +59,9 @@ export default function HomePage() {
                 See our work
               </ButtonLink>
             </div>
+          </div>
+          <div className="lg:col-span-6">
+            <HeroCollage />
           </div>
         </Container>
       </section>
