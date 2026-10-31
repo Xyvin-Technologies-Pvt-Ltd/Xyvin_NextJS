@@ -66,18 +66,17 @@ export const siteConfig = {
     terms: "/terms",
   },
 
-  // Countries with Xyvin clients, shown on the global presence map.
-  // iso = ISO 3166-1 numeric code; lon/lat place the pin; stem = pin height (to keep nearby pins apart);
-  // clients = optional names shown when the country is selected. TODO: add missing countries and clients.
+  // Countries with Xyvin clients (globe markers and presence tabs).
+  // iso = ISO 3166-1 numeric code; lon/lat = marker position; clients = names shown when selected.
   clientCountries: [
-    { name: "India", iso: "356", lon: 77.5, lat: 20.5, continent: "Asia", stem: 70, clients: ["KSSIA", "GOEC", "Double Horse", "myG"] },
-    { name: "United Arab Emirates", short: "UAE", iso: "784", lon: 54.4, lat: 24.2, continent: "Asia", stem: 105, clients: ["Liva Insurance", "Basari Opticals"] },
-    { name: "Oman", iso: "512", lon: 57.5, lat: 21.5, continent: "Asia", stem: 55, clients: ["Continuity Business Solutions"] },
-    { name: "United Kingdom", short: "UK", iso: "826", lon: -1.6, lat: 52.6, continent: "Europe", stem: 92, clients: [] as string[] },
-    { name: "Belgium", iso: "056", lon: 4.5, lat: 50.6, continent: "Europe", stem: 46, clients: ["International Academy of Osteopathy"] },
-    { name: "United States", short: "USA", iso: "840", lon: -96, lat: 38.5, continent: "North America", stem: 70, clients: [] as string[] },
-    { name: "Singapore", iso: "702", lon: 103.8, lat: 1.35, continent: "Asia", stem: 70, clients: ["Exctel"] },
-    { name: "Australia", iso: "036", lon: 144.9, lat: -37.8, continent: "Australia", stem: 70, clients: ["Kangaroo Care", "Atlantis Medical"] },
+    { name: "India", iso: "356", lon: 77.5, lat: 20.5, continent: "Asia", clients: ["KSSIA", "GOEC", "Double Horse", "myG"] },
+    { name: "United Arab Emirates", short: "UAE", iso: "784", lon: 54.4, lat: 24.2, continent: "Asia", clients: ["Liva Insurance", "Basari Opticals"] },
+    { name: "Oman", iso: "512", lon: 57.5, lat: 21.5, continent: "Asia", clients: ["Continuity Business Solutions"] },
+    { name: "United Kingdom", short: "UK", iso: "826", lon: -1.6, lat: 52.6, continent: "Europe", clients: [] as string[] },
+    { name: "Belgium", iso: "056", lon: 4.5, lat: 50.6, continent: "Europe", clients: ["International Academy of Osteopathy"] },
+    { name: "United States", short: "USA", iso: "840", lon: -96, lat: 38.5, continent: "North America", clients: [] as string[] },
+    { name: "Singapore", iso: "702", lon: 103.8, lat: 1.35, continent: "Asia", clients: ["Exctel"] },
+    { name: "Australia", iso: "036", lon: 144.9, lat: -37.8, continent: "Australia", clients: ["Kangaroo Care", "Atlantis Medical"] },
   ],
 };
 

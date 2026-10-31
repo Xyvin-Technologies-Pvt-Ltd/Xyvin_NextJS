@@ -1,7 +1,8 @@
 import React from "react";
 import siteConfig, { absoluteUrl } from "@/data/site_config";
 import { getAllBlogPosts } from "@/data/blog_data";
-import type { Service } from "@/data/services";
+import services, { type Service } from "@/data/services";
+import industries from "@/data/industries";
 
 type BlogPostLike = {
   title: string;
@@ -51,6 +52,7 @@ function buildData(props: Props) {
         },
         openingHours: "Mo-Fr 09:00-18:00",
         areaServed: siteConfig.clientCountries.map((c) => c.name),
+        knowsAbout: [...services.map((s) => s.title), ...industries.map((i) => i.name)],
         sameAs: Object.values(siteConfig.socials),
       };
 

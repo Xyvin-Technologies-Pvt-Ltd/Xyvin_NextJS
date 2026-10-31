@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { pageMetadata } from "@/lib/metadata";
 import projects from "@/data/projects";
 import PageHeader from "@/components/ui/PageHeader";
@@ -24,7 +25,9 @@ export default function WorkPage() {
         <h2 id="projects-heading" className="sr-only">
           All projects
         </h2>
-        <WorkGrid />
+        <Suspense>
+          <WorkGrid />
+        </Suspense>
       </Section>
       <CtaBand title="Want results like these?" />
     </>

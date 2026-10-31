@@ -13,8 +13,8 @@ import CtaBand from "@/components/ui/CtaBand";
 import ServiceList from "@/components/sections/ServiceList";
 import ProcessSteps from "@/components/sections/ProcessSteps";
 import WhyXyvin from "@/components/sections/WhyXyvin";
-import GlobalPresence from "@/components/sections/GlobalPresence";
-import HeroCollage from "@/components/sections/HeroCollage";
+import HeroGlobe from "@/components/sections/HeroGlobe";
+import IndustryGrid from "@/components/sections/IndustryGrid";
 
 export const metadata = pageMetadata({
   description: `Xyvin Technologies designs, builds and supports web platforms, mobile apps, ERP systems and AI tools for businesses worldwide. Clients in ${countriesServed} countries.`,
@@ -61,12 +61,10 @@ export default function HomePage() {
             </div>
           </div>
           <div className="lg:col-span-6">
-            <HeroCollage />
+            <HeroGlobe />
           </div>
         </Container>
       </section>
-
-      <GlobalPresence />
 
       <section aria-labelledby="clients-heading" className="py-16 sm:py-24">
         <Container>
@@ -92,7 +90,17 @@ export default function HomePage() {
         <ServiceList />
       </Section>
 
-      <Section aria-labelledby="work-heading">
+      <Section aria-labelledby="industries-heading">
+        <SectionHeading
+          id="industries-heading"
+          label="Industries"
+          title="Industries we serve"
+          intro="Some of the sectors we build for, with real projects behind each."
+        />
+        <IndustryGrid />
+      </Section>
+
+      <Section tone="paper" aria-labelledby="work-heading">
         <SectionHeading
           id="work-heading"
           label="Selected work"
@@ -111,7 +119,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section tone="paper" aria-labelledby="why-heading">
+      <Section aria-labelledby="why-heading">
         <SectionHeading
           id="why-heading"
           label="Why Xyvin"
@@ -121,7 +129,7 @@ export default function HomePage() {
         <WhyXyvin />
       </Section>
 
-      <Section aria-labelledby="process-heading">
+      <Section tone="paper" aria-labelledby="process-heading">
         <SectionHeading
           id="process-heading"
           label="How we work"
@@ -131,7 +139,7 @@ export default function HomePage() {
         <ProcessSteps />
       </Section>
 
-      <Section tone="paper" aria-labelledby="testimonials-heading">
+      <Section aria-labelledby="testimonials-heading">
         <SectionHeading id="testimonials-heading" label="Clients" title="What our clients say" />
         <div className="grid gap-6 md:grid-cols-2">
           {clientTestimonials.map((t) => (

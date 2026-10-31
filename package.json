@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "cobe": "^2.0.1",
     "lucide-react": "^0.523.0",
     "next": "^16.4.3",
     "react": "^19.3.1",
