@@ -7,7 +7,7 @@ import siteConfig from "@/data/site_config";
 const HERO_PROJECTS: { slug: string; label: string }[] = [
   { slug: "goec", label: "EV charging app" },
   { slug: "azavista", label: "Event software" },
-  { slug: "basari-opticals", label: "Eyewear store" },
+  { slug: "kangaroo-care", label: "Care provider website" },
   { slug: "khedmah", label: "Services app" },
 ];
 

@@ -39,7 +39,7 @@ export const services: Service[] = [
       "Web applications and member portals",
       "CMS setup, SEO foundations and team training",
     ],
-    relatedProjects: ["double-horse", "basari-opticals", "atlantis-medical"],
+    relatedProjects: ["liva-insurance", "kangaroo-care", "exctel"],
   },
   {
     slug: "mobile-apps",

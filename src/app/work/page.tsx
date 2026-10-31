@@ -18,7 +18,7 @@ export default function WorkPage() {
       <PageHeader
         breadcrumb={[{ label: "Work" }]}
         title="Our work"
-        intro={`A selection of ${projects.length} projects for clients in India, the Middle East, Europe and Australia: member portals, online stores, mobile apps and business platforms.`}
+        intro={`A selection of ${projects.length} projects for clients in India, the Middle East, Europe, Singapore and Australia: company websites, member portals, online stores, mobile apps and business platforms.`}
       />
       <Section aria-labelledby="projects-heading">
         <h2 id="projects-heading" className="sr-only">

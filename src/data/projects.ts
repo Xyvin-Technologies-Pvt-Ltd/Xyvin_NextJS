@@ -16,6 +16,11 @@ import kssia from "@/assets/img/kssia 1.png";
 import skopick from "@/assets/img/stoppick.png";
 import aiits from "@/assets/img/AIITS.png";
 import khedmah from "@/assets/img/khedmah.png";
+import iao from "@/assets/img/project-iao.jpg";
+import exctel from "@/assets/img/project-exctel.jpg";
+import liva from "@/assets/img/project-liva.jpg";
+import continuity from "@/assets/img/project-continuity.jpg";
+import kangarooCare from "@/assets/img/project-kangaroo.jpg";
 
 export const projectCategories = ["Websites", "E-commerce", "Platforms & portals", "Mobile apps"] as const;
 export type ProjectCategory = (typeof projectCategories)[number];
@@ -43,6 +48,49 @@ export interface Project {
 // old portfolio (e.g. "Atlantis Medical" showed GAIA Sanctuary).
 export const projects: Project[] = [
   {
+    slug: "liva-insurance",
+    title: "Liva Insurance",
+    category: "Websites",
+    description: "Website for Liva Insurance in the UAE, covering car, health, home and travel insurance.",
+    image: liva,
+    link: "https://www.livainsurance.ae/",
+    featured: true,
+  },
+  {
+    slug: "kangaroo-care",
+    title: "Kangaroo Care",
+    category: "Websites",
+    description: "Website for Kangaroo Care, a registered NDIS provider in Brisbane and Melbourne, Australia.",
+    image: kangarooCare,
+    link: "https://kangaroocare.com.au/",
+    featured: true,
+  },
+  {
+    slug: "exctel",
+    title: "Exctel",
+    category: "Websites",
+    description: "Website for Exctel, a Singapore engineering company delivering telecom and safety systems.",
+    image: exctel,
+    link: "https://www.exctel.com/",
+    featured: true,
+  },
+  {
+    slug: "international-academy-of-osteopathy",
+    title: "International Academy of Osteopathy",
+    category: "Websites",
+    description: "Website for IAO, an osteopathy training academy based in Gent, Belgium.",
+    image: iao,
+    link: "https://osteopathie.eu/en/",
+  },
+  {
+    slug: "continuity-business-solutions",
+    title: "Continuity Business Solutions",
+    category: "Websites",
+    description: "Website for Continuity Business Solutions, a technology company in Oman.",
+    image: continuity,
+    link: "https://www.continuityoman.com/",
+  },
+  {
     slug: "goec",
     title: "GOEC",
     category: "Platforms & portals",
@@ -65,7 +113,6 @@ export const projects: Project[] = [
     category: "Mobile apps",
     description: "Service platform app for Khedmah.",
     image: khedmah,
-    featured: true,
   },
   {
     slug: "azavista",
@@ -83,7 +130,6 @@ export const projects: Project[] = [
     description: "Online eyewear store for Basari Opticals in the UAE.",
     image: basari,
     link: "https://basariopticals.com/",
-    featured: true,
   },
   {
     slug: "double-horse",
@@ -92,7 +138,6 @@ export const projects: Project[] = [
     description: "E-commerce website for Double Horse, a Kerala food brand.",
     image: doubleHorse,
     link: "https://doublehorse.in/",
-    featured: true,
   },
   {
     slug: "itcc",

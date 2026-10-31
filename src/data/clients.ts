@@ -19,6 +19,10 @@ import worko from "@/assets/img/Frame 1485460.png";
 import myg from "@/assets/img/myg-logo__2_ 1.png";
 import skybertech from "@/assets/img/Subtract.png";
 import kk from "@/assets/img/logo kk 2.png";
+import livaInsurance from "@/assets/img/clients/liva-insurance.png";
+import exctel from "@/assets/img/clients/exctel.png";
+import kangarooCare from "@/assets/img/clients/kangaroo-care.png";
+import iao from "@/assets/img/clients/iao.png";
 
 export interface Client {
   name: string;
@@ -26,18 +30,23 @@ export interface Client {
 }
 
 // Clients and partner organisations whose logos appear on the site (identified from the logo files).
+// The first 12 appear on the homepage (6 on mobile).
 export const clients: Client[] = [
   { name: "GOEC", logo: goec },
+  { name: "Liva Insurance", logo: livaInsurance },
+  { name: "Exctel", logo: exctel },
+  { name: "Kangaroo Care", logo: kangarooCare },
   { name: "KSSIA", logo: kssia },
+  { name: "International Academy of Osteopathy", logo: iao },
+  { name: "Azavista", logo: azavista },
   { name: "myG", logo: myg },
+  { name: "Atlantis Medical", logo: atlantis },
   { name: "Khedmah", logo: khedmah },
-  { name: "Double Horse", logo: doubleHorse },
   { name: "Indo Transworld Chamber of Commerce", logo: itcc },
+  { name: "Double Horse", logo: doubleHorse },
   { name: "International Promoters Association", logo: ipa },
   { name: "AKCAF", logo: akcaf },
-  { name: "Azavista", logo: azavista },
   { name: "Basari Opticals", logo: basari },
-  { name: "Atlantis Medical", logo: atlantis },
   { name: "Special40", logo: special40 },
   { name: "Worko", logo: worko },
   { name: "KK", logo: kk },

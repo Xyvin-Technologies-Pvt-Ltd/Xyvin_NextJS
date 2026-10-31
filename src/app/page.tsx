@@ -97,7 +97,7 @@ export default function HomePage() {
           id="work-heading"
           label="Selected work"
           title="Recent work"
-          intro="Platforms, online stores and apps we've shipped for clients in India, the Middle East, Europe and Australia."
+          intro="Websites, platforms and apps we've shipped for clients in India, the Middle East, Europe, Singapore and Australia."
           action={
             <ButtonLink href={siteConfig.routes.work} variant="text" arrow>
               See all work

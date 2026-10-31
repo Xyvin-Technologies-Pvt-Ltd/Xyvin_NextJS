@@ -71,13 +71,13 @@ export const siteConfig = {
   // clients = optional names shown when the country is selected. TODO: add missing countries and clients.
   clientCountries: [
     { name: "India", iso: "356", lon: 77.5, lat: 20.5, continent: "Asia", stem: 70, clients: ["KSSIA", "GOEC", "Double Horse", "myG"] },
-    { name: "United Arab Emirates", short: "UAE", iso: "784", lon: 54.4, lat: 24.2, continent: "Asia", stem: 105, clients: ["Basari Opticals"] },
-    { name: "Oman", iso: "512", lon: 57.5, lat: 21.5, continent: "Asia", stem: 55, clients: ["Continuity Oman"] },
+    { name: "United Arab Emirates", short: "UAE", iso: "784", lon: 54.4, lat: 24.2, continent: "Asia", stem: 105, clients: ["Liva Insurance", "Basari Opticals"] },
+    { name: "Oman", iso: "512", lon: 57.5, lat: 21.5, continent: "Asia", stem: 55, clients: ["Continuity Business Solutions"] },
     { name: "United Kingdom", short: "UK", iso: "826", lon: -1.6, lat: 52.6, continent: "Europe", stem: 92, clients: [] as string[] },
-    { name: "Belgium", iso: "056", lon: 4.5, lat: 50.6, continent: "Europe", stem: 46, clients: [] as string[] },
+    { name: "Belgium", iso: "056", lon: 4.5, lat: 50.6, continent: "Europe", stem: 46, clients: ["International Academy of Osteopathy"] },
     { name: "United States", short: "USA", iso: "840", lon: -96, lat: 38.5, continent: "North America", stem: 70, clients: [] as string[] },
-    { name: "Singapore", iso: "702", lon: 103.8, lat: 1.35, continent: "Asia", stem: 70, clients: [] as string[] },
-    { name: "Australia", iso: "036", lon: 144.9, lat: -37.8, continent: "Australia", stem: 70, clients: ["Atlantis Medical"] },
+    { name: "Singapore", iso: "702", lon: 103.8, lat: 1.35, continent: "Asia", stem: 70, clients: ["Exctel"] },
+    { name: "Australia", iso: "036", lon: 144.9, lat: -37.8, continent: "Australia", stem: 70, clients: ["Kangaroo Care", "Atlantis Medical"] },
   ],
 };
 
