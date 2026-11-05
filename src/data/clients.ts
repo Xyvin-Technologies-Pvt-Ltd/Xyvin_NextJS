@@ -7,13 +7,12 @@ import gaia from "@/assets/img/new_brand5.svg";
 import visitingCard from "@/assets/img/new_brand6.svg";
 import pravasiTax from "@/assets/img/new_brand7.svg";
 import goec from "@/assets/img/new_brand8.svg";
-import atlantis from "@/assets/img/new_brand9.svg";
-import azavista from "@/assets/img/new_brand10.svg";
+import twentyFourNews from "@/assets/img/clients/24-news.png";
+import ipaConnect from "@/assets/img/clients/ipa-connect.png";
 import akcaf from "@/assets/img/ACKAF.png";
 import itcc from "@/assets/img/ITCC (1).png";
-import ipa from "@/assets/img/IPA (1).png";
 import khedmah from "@/assets/img/Khedmah (1).png";
-import kssia from "@/assets/img/KSSIA.png";
+import mmc from "@/assets/img/clients/mmc.png";
 import skopick from "@/assets/img/Skopick.png";
 import worko from "@/assets/img/Frame 1485460.png";
 import myg from "@/assets/img/myg-logo__2_ 1.png";
@@ -36,15 +35,14 @@ export const clients: Client[] = [
   { name: "Liva Insurance", logo: livaInsurance },
   { name: "Exctel", logo: exctel },
   { name: "Kangaroo Care", logo: kangarooCare },
-  { name: "KSSIA", logo: kssia },
+  { name: "Million Malayali Club", logo: mmc },
   { name: "International Academy of Osteopathy", logo: iao },
-  { name: "Azavista", logo: azavista },
+  { name: "IPA Connect", logo: ipaConnect },
   { name: "myG", logo: myg },
-  { name: "Atlantis Medical", logo: atlantis },
+  { name: "24 News", logo: twentyFourNews },
   { name: "Khedmah", logo: khedmah },
   { name: "Indo Transworld Chamber of Commerce", logo: itcc },
   { name: "Double Horse", logo: doubleHorse },
-  { name: "International Promoters Association", logo: ipa },
   { name: "AKCAF", logo: akcaf },
   { name: "Basari Opticals", logo: basari },
   { name: "Special40", logo: special40 },
