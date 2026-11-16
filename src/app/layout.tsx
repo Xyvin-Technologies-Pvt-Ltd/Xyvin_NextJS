@@ -6,6 +6,7 @@ import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import StructuredData from "@/components/seo/StructuredData";
 import siteConfig from "@/data/site_config";
 import SiteShell from "@/components/layout/SiteShell";
+import SiteLoader from "@/components/layout/SiteLoader";
 
 // Self-hosted variable fonts (Inter and Inter Tight, SIL Open Font License).
 const bodyFont = localFont({
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${bodyFont.variable} ${headingFont.variable}`}>
       <body>
+        <SiteLoader />
         <StructuredData type="organization" />
         <SiteShell>{children}</SiteShell>
         <WhatsAppButton />

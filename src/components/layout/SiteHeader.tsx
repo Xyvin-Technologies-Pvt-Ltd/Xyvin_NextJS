@@ -45,12 +45,15 @@ export default function SiteHeader() {
   }, [open]);
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+  // Over the dark homepage hero the bar is transparent with white text until you scroll.
+  const overHero = pathname === "/" && !scrolled && !open;
 
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b bg-white transition-colors",
-        scrolled || open ? "border-line" : "border-transparent"
+        "fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300",
+        overHero ? "border-transparent bg-transparent" : "bg-white",
+        !overHero && (scrolled || open) ? "border-line" : "border-transparent"
       )}
     >
       <a
@@ -61,7 +64,14 @@ export default function SiteHeader() {
       </a>
       <Container className="flex h-[72px] items-center justify-between gap-6">
         <Link href="/" className="flex items-center" aria-label={`${siteConfig.name}, home`}>
-          <Image src={logo} alt="" width={52} height={52} priority />
+          <Image
+            src={logo}
+            alt=""
+            width={52}
+            height={52}
+            priority
+            className={cn("transition-[filter] duration-300", overHero && "brightness-0 invert")}
+          />
         </Link>
 
         <nav aria-label="Main" className="hidden md:block">
@@ -76,8 +86,10 @@ export default function SiteHeader() {
                     "relative py-2 text-[15px] font-medium transition-colors",
                     "after:absolute after:inset-x-0 after:-bottom-0.5 after:h-[2px] after:origin-left after:rounded-full after:transition-transform after:duration-200",
                     isActive(item.href)
-                      ? "text-navy-900 after:scale-x-100 after:bg-accent"
-                      : "text-muted after:scale-x-0 after:bg-navy-900/25 hover:text-navy-900 hover:after:scale-x-100"
+                      ? cn(overHero ? "text-white" : "text-navy-900", "after:scale-x-100 after:bg-accent")
+                      : overHero
+                        ? "text-white/75 after:scale-x-0 after:bg-white/40 hover:text-white hover:after:scale-x-100"
+                        : "text-muted after:scale-x-0 after:bg-navy-900/25 hover:text-navy-900 hover:after:scale-x-100"
                   )}
                 >
                   {item.label}
@@ -95,7 +107,7 @@ export default function SiteHeader() {
 
         <button
           type="button"
-          className="-mr-2 rounded-md p-2 text-navy-900 md:hidden"
+          className={cn("-mr-2 rounded-md p-2 md:hidden", overHero ? "text-white" : "text-navy-900")}
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}

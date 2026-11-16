@@ -13,7 +13,7 @@ export default function HeroGlobe() {
 
   return (
     <div className="mx-auto w-full max-w-[520px] lg:max-w-none">
-      <Globe theme="light" markers={markers} className="lg:-mr-4" />
+      <Globe markers={markers} className="lg:-mr-4" />
       <p className="sr-only">Countries where Xyvin has clients: {countries.map((c) => c.name).join(", ")}.</p>
     </div>
   );

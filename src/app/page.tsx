@@ -15,6 +15,7 @@ import ServiceList from "@/components/sections/ServiceList";
 import ProcessSteps from "@/components/sections/ProcessSteps";
 import WhyXyvin from "@/components/sections/WhyXyvin";
 import HeroGlobe from "@/components/sections/HeroGlobe";
+import Starfield from "@/components/ui/Starfield";
 import IndustryGrid from "@/components/sections/IndustryGrid";
 
 export const metadata = pageMetadata({
@@ -25,10 +26,17 @@ export const metadata = pageMetadata({
 export default function HomePage() {
   return (
     <>
-      <section className="overflow-hidden pb-16 pt-32 sm:pb-24 sm:pt-40">
+      <section className="relative isolate overflow-hidden bg-navy-950 pb-16 pt-32 text-white sm:pb-24 sm:pt-40">
+        {/* Space backdrop: deep navy, a cyan bloom behind the globe, and a starfield. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_60%_at_75%_45%,rgba(14,116,144,0.28),transparent_70%),radial-gradient(ellipse_60%_50%_at_10%_100%,rgba(30,64,175,0.25),transparent_70%)]"
+        />
+        <Starfield className="-z-10" />
+        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-10 h-px bg-gradient-to-r from-transparent via-cyan-300/30 to-transparent" />
         <Container className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
-            <h1 className="text-display-xl">
+            <h1 className="text-display-xl text-white">
               We design and build software for businesses{" "}
               <span className="relative inline-block whitespace-nowrap">
                 around the world
@@ -48,7 +56,7 @@ export default function HomePage() {
                 </svg>
               </span>
             </h1>
-            <p className="mt-8 max-w-xl text-lg text-muted sm:text-xl">
+            <p className="mt-8 max-w-xl text-lg text-navy-200 sm:text-xl">
               Web platforms, mobile apps, ERP systems and AI tools, from first idea to long after launch. One
               accountable team, working with clients in {countriesServed} countries.
             </p>
@@ -56,7 +64,7 @@ export default function HomePage() {
               <ButtonLink href={bookingHref} track="booking" trackLocation="hero">
                 Book a free consultation
               </ButtonLink>
-              <ButtonLink href={siteConfig.routes.work} variant="secondary" arrow>
+              <ButtonLink href={siteConfig.routes.work} variant="secondary" onDark arrow>
                 See our work
               </ButtonLink>
             </div>

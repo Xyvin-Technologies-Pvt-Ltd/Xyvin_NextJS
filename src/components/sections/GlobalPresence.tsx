@@ -1,5 +1,6 @@
 import siteConfig, { continentsServed, countriesServed } from "@/data/site_config";
 import Container from "@/components/ui/Container";
+import Starfield from "@/components/ui/Starfield";
 import PresenceGlobe from "./PresenceGlobe";
 
 interface Props {
@@ -12,7 +13,15 @@ export default function GlobalPresence({ title = "Our global presence", intro }:
   const countries = siteConfig.clientCountries;
 
   return (
-    <section aria-labelledby="presence-heading" className="bg-navy-950 py-16 text-white sm:py-24">
+    <section
+      aria-labelledby="presence-heading"
+      className="relative isolate overflow-hidden bg-navy-950 py-16 text-white sm:py-24"
+    >
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_45%_at_50%_62%,rgba(14,116,144,0.25),transparent_70%)]"
+      />
+      <Starfield className="-z-10" density={0.8} />
       <Container>
         <div className="mx-auto max-w-3xl text-center">
           <h2 id="presence-heading" className="text-display-lg text-white">

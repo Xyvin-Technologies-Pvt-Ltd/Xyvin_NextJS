@@ -48,7 +48,7 @@ export default function PresenceGlobe() {
       </div>
 
       <div className="mx-auto mt-10 max-w-xl sm:mt-14">
-        <Globe theme="dark" markers={markers} focus={focus} />
+        <Globe markers={markers} focus={focus} />
       </div>
 
       <div aria-live="polite" className="mt-6 min-h-[3.5rem] text-center sm:mt-8">
