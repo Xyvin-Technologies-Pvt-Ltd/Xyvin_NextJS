@@ -1,3 +1,5 @@
+import ProtectedEmail from "@/components/ui/ProtectedEmail";
+import { encodeEmail } from "@/lib/email-obfuscation";
 import { pageMetadata } from "@/lib/metadata";
 import siteConfig from "@/data/site_config";
 import LegalPage from "@/components/sections/LegalPage";
@@ -68,7 +70,7 @@ export default function PrivacyPage() {
       <h2>Your rights</h2>
       <p>
         You can ask us to access, correct or delete the personal data we hold about you, or withdraw consent you have
-        given. Email us at <a href={`mailto:${email}`}>{email}</a> and we&apos;ll respond within 30 days.
+        given. Email us at <ProtectedEmail encoded={encodeEmail(email)} /> and we&apos;ll respond within 30 days.
       </p>
 
       <h2>Contact</h2>
@@ -81,7 +83,7 @@ export default function PrivacyPage() {
             <br />
           </span>
         ))}
-        <a href={`mailto:${email}`}>{email}</a>
+        <ProtectedEmail encoded={encodeEmail(email)} />
       </p>
     </LegalPage>
   );

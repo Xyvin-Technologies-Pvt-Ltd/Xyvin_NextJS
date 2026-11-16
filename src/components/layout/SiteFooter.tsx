@@ -1,3 +1,5 @@
+import ProtectedEmail from "@/components/ui/ProtectedEmail";
+import { encodeEmail } from "@/lib/email-obfuscation";
 import Image from "next/image";
 import Link from "next/link";
 import logoWhite from "@/assets/img/Logo_white.png";
@@ -10,7 +12,6 @@ const company = [
   { label: "Our work", href: siteConfig.routes.work },
   { label: "Blog", href: siteConfig.routes.blog },
   { label: "Contact", href: siteConfig.routes.contact },
-  { label: "Careers", href: `mailto:${siteConfig.careersEmail}?subject=Careers` },
 ];
 
 const socials = [
@@ -68,6 +69,11 @@ export default function SiteFooter() {
                 </Link>
               </li>
             ))}
+            <li>
+              <ProtectedEmail encoded={encodeEmail(siteConfig.careersEmail)} subject="Careers" className={linkClass}>
+                Careers
+              </ProtectedEmail>
+            </li>
           </ul>
         </div>
 
@@ -75,9 +81,7 @@ export default function SiteFooter() {
           <h2 className="text-sm font-semibold text-white">Get in touch</h2>
           <ul className="mt-4 space-y-3 text-[15px]">
             <li>
-              <a href={`mailto:${siteConfig.email}`} className={linkClass} data-track-location="footer">
-                {siteConfig.email}
-              </a>
+              <ProtectedEmail encoded={encodeEmail(siteConfig.email)} className={linkClass} data-track-location="footer" />
             </li>
             <li>
               <a href={siteConfig.phone.href} className={linkClass} data-track-location="footer">

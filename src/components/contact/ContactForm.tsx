@@ -1,12 +1,52 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AlertCircle, CheckCircle2, Loader2 } from "lucide-react";
 import siteConfig, { whatsappUrl } from "@/data/site_config";
 import { contactServiceOptions } from "@/data/services";
 import { CONTACT_LIMITS, ContactErrors, ContactInput, normalizeContact, validateContact } from "@/lib/contact";
 import { trackEvent } from "@/lib/track";
 import { cn } from "@/lib/cn";
+
+// Cloudflare Turnstile (invisible bot check). Off unless the site key is configured.
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+interface TurnstileApi {
+  render: (el: HTMLElement, opts: Record<string, unknown>) => string;
+  reset: (id: string) => void;
+  remove: (id: string) => void;
+}
+declare global {
+  interface Window {
+    turnstile?: TurnstileApi;
+  }
+}
+
+let turnstileScript: Promise<void> | null = null;
+function loadTurnstile() {
+  turnstileScript ??= new Promise<void>((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+    s.async = true;
+    s.onload = () => resolve();
+    s.onerror = () => {
+      turnstileScript = null;
+      reject(new Error("Turnstile failed to load"));
+    };
+    document.head.appendChild(s);
+  });
+  return turnstileScript;
+}
+
+async function fetchFormToken() {
+  try {
+    const res = await fetch("/api/contact", { cache: "no-store" });
+    const data = (await res.json()) as { token?: string };
+    return data.token ?? "";
+  } catch {
+    return "";
+  }
+}
 
 const emptyForm: ContactInput = { name: "", email: "", phone: "", company: "", service: "", message: "" };
 
@@ -48,7 +88,42 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<ContactErrors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [serverError, setServerError] = useState("");
-  const startedAt = useRef(Date.now());
+  const formToken = useRef("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileEl = useRef<HTMLDivElement>(null);
+  const turnstileId = useRef<string | null>(null);
+  const showForm = status !== "success";
+
+  const refreshFormToken = useCallback(async () => {
+    formToken.current = await fetchFormToken();
+  }, []);
+
+  useEffect(() => {
+    if (showForm) void refreshFormToken();
+  }, [showForm, refreshFormToken]);
+
+  useEffect(() => {
+    if (!TURNSTILE_SITE_KEY || !showForm) return;
+    let cancelled = false;
+    loadTurnstile()
+      .then(() => {
+        if (cancelled || !turnstileEl.current || !window.turnstile) return;
+        turnstileId.current = window.turnstile.render(turnstileEl.current, {
+          sitekey: TURNSTILE_SITE_KEY,
+          appearance: "interaction-only", // invisible unless Cloudflare needs a click
+          callback: (t: string) => setTurnstileToken(t),
+          "expired-callback": () => setTurnstileToken(""),
+          "error-callback": () => setTurnstileToken(""),
+        });
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+      if (turnstileId.current && window.turnstile) window.turnstile.remove(turnstileId.current);
+      turnstileId.current = null;
+      setTurnstileToken("");
+    };
+  }, [showForm]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -76,12 +151,19 @@ export default function ContactForm() {
       return;
     }
 
+    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+      setServerError("Please wait a moment while we check you're not a bot, then try again.");
+      setStatus("error");
+      return;
+    }
+
     setStatus("sending");
     try {
+      if (!formToken.current) await refreshFormToken();
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, website: honeypot, elapsedMs: Date.now() - startedAt.current }),
+        body: JSON.stringify({ ...form, website: honeypot, token: formToken.current, turnstileToken }),
       });
       const result = await res.json().catch(() => ({}));
       if (res.ok && result.ok) {
@@ -95,6 +177,11 @@ export default function ContactForm() {
       } else {
         setServerError(result.error || "Could not send your message.");
         setStatus("error");
+      }
+      // Turnstile tokens are single-use.
+      if (turnstileId.current && window.turnstile) {
+        window.turnstile.reset(turnstileId.current);
+        setTurnstileToken("");
       }
     } catch {
       setServerError("Could not send your message.");
@@ -110,10 +197,7 @@ export default function ContactForm() {
         <p className="mt-2 text-muted">We&apos;ll get back to you {siteConfig.responseTime}.</p>
         <button
           type="button"
-          onClick={() => {
-            startedAt.current = Date.now();
-            setStatus("idle");
-          }}
+          onClick={() => setStatus("idle")}
           className="mt-6 text-sm font-semibold text-navy-900 underline underline-offset-4"
         >
           Send another message
@@ -198,6 +282,8 @@ export default function ContactForm() {
           </p>
         </div>
       )}
+
+      {TURNSTILE_SITE_KEY && <div ref={turnstileEl} className="mt-6 empty:hidden" />}
 
       <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <button

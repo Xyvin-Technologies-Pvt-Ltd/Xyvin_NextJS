@@ -5,6 +5,8 @@ import siteConfig, { mapsUrl, whatsappUrl } from "@/data/site_config";
 import PageHeader from "@/components/ui/PageHeader";
 import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
+import ProtectedEmail from "@/components/ui/ProtectedEmail";
+import { encodeEmail } from "@/lib/email-obfuscation";
 import ContactForm from "@/components/contact/ContactForm";
 
 export const metadata = pageMetadata({
@@ -32,9 +34,10 @@ const channels = [
   {
     icon: Mail,
     title: "Email",
-    lines: [siteConfig.email, `We reply ${siteConfig.responseTime}`],
+    lines: [`We reply ${siteConfig.responseTime}`],
     action: "Send an email",
-    href: `mailto:${siteConfig.email}`,
+    href: "",
+    protectedEmail: encodeEmail(siteConfig.email),
   },
   {
     icon: MapPin,
@@ -66,26 +69,41 @@ export default function ContactPage() {
           Ways to reach us
         </h2>
         <ul className="grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-          {channels.map(({ icon: Icon, title, lines, action, href }) => {
+          {channels.map(({ icon: Icon, title, lines, action, href, ...channel }) => {
+            const protectedEmail = "protectedEmail" in channel ? channel.protectedEmail : undefined;
+            const actionClass =
+              "mt-5 inline-flex items-center gap-2 text-sm font-semibold text-navy-900 underline-offset-4 hover:underline";
             const external = href.startsWith("http");
             return (
               <li key={title} className="flex flex-col bg-white p-6 sm:p-8">
                 <Icon size={22} aria-hidden="true" className="text-navy-900" />
                 <h3 className="mt-4 text-lg">{title}</h3>
                 <div className="mt-2 flex-1 text-[15px] text-muted">
+                  {protectedEmail && (
+                    <p>
+                      <ProtectedEmail encoded={protectedEmail} className="hover:text-navy-900" />
+                    </p>
+                  )}
                   {lines.map((line) => (
                     <p key={line}>{line}</p>
                   ))}
                 </div>
-                <a
-                  href={href}
-                  data-track-location="contact_card"
-                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-navy-900 underline-offset-4 hover:underline"
-                  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                >
-                  {action}
-                  <ArrowRight size={16} aria-hidden="true" />
-                </a>
+                {protectedEmail ? (
+                  <ProtectedEmail encoded={protectedEmail} data-track-location="contact_card" className={actionClass}>
+                    {action}
+                    <ArrowRight size={16} aria-hidden="true" />
+                  </ProtectedEmail>
+                ) : (
+                  <a
+                    href={href}
+                    data-track-location="contact_card"
+                    className={actionClass}
+                    {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  >
+                    {action}
+                    <ArrowRight size={16} aria-hidden="true" />
+                  </a>
+                )}
               </li>
             );
           })}

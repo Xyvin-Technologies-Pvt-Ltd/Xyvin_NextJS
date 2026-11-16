@@ -1,3 +1,5 @@
+import ProtectedEmail from "@/components/ui/ProtectedEmail";
+import { encodeEmail } from "@/lib/email-obfuscation";
 import { pageMetadata } from "@/lib/metadata";
 import siteConfig, { countriesServed } from "@/data/site_config";
 import team from "@/data/team_data";
@@ -66,9 +68,13 @@ export default function AboutPage() {
           label="Leadership"
           title="The people who run Xyvin"
           action={
-            <ButtonLink href={`mailto:${siteConfig.careersEmail}?subject=Careers`} variant="secondary" className="bg-white">
+            <ProtectedEmail
+              encoded={encodeEmail(siteConfig.careersEmail)}
+              subject="Careers"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-navy-900/20 bg-white px-5 py-3 text-[15px] font-semibold text-navy-900 transition-colors hover:border-navy-900"
+            >
               Join our team
-            </ButtonLink>
+            </ProtectedEmail>
           }
         />
         <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">

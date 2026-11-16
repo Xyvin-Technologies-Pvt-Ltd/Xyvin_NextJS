@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { MIN_FILL_TIME_MS, normalizeContact, validateContact } from "@/lib/contact";
+import { checkFormToken, createFormToken } from "@/lib/contact-token";
+import { screenContact } from "@/lib/spam";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -27,6 +29,32 @@ const escapeHtml = (value: string) =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 
+/** Issues the signed form token. The contact form fetches this when it mounts. */
+export function GET() {
+  return NextResponse.json({ token: createFormToken() }, { headers: { "Cache-Control": "no-store" } });
+}
+
+/** Cloudflare Turnstile check. Only enforced when TURNSTILE_SECRET_KEY is set. */
+async function passesTurnstile(token: unknown, ip: string) {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) return true;
+  if (typeof token !== "string" || !token) return false;
+  try {
+    const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      body: new URLSearchParams({ secret, response: token, ...(ip !== "unknown" ? { remoteip: ip } : {}) }),
+    });
+    const data = (await res.json()) as { success?: boolean };
+    return data.success === true;
+  } catch (err) {
+    console.error("Turnstile verification failed:", err);
+    return false;
+  }
+}
+
+// A normal-looking success for bots, so they don't learn to adapt.
+const fakeSuccess = () => NextResponse.json({ ok: true });
+
 export async function POST(request: Request) {
   let body: Record<string, unknown>;
   try {
@@ -35,14 +63,27 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "Invalid request." }, { status: 400 });
   }
 
-  // Spam traps: a hidden field humans never fill, and a minimum time on the form.
-  // Bots get a normal-looking success so they don't learn to adapt.
-  const elapsedMs = Number(body.elapsedMs);
-  if (body.website || !Number.isFinite(elapsedMs) || elapsedMs < MIN_FILL_TIME_MS) {
-    return NextResponse.json({ ok: true });
+  // Spam traps: a hidden field humans never fill, and a server-signed "form opened at"
+  // token (missing/forged = posted without loading the page; too fresh = filled by a bot).
+  if (body.website) return fakeSuccess();
+  const token = checkFormToken(body.token);
+  if (!token.valid || token.ageMs < MIN_FILL_TIME_MS) return fakeSuccess();
+  if (token.expired) {
+    return NextResponse.json(
+      { ok: false, error: "This page has been open a long time. Please refresh it and try again." },
+      { status: 400 }
+    );
   }
 
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+
+  if (!(await passesTurnstile(body.turnstileToken, ip))) {
+    return NextResponse.json(
+      { ok: false, error: "We couldn't verify you're human. Please try again." },
+      { status: 400 }
+    );
+  }
+
   if (isRateLimited(ip)) {
     return NextResponse.json(
       { ok: false, error: "Too many messages. Please try again in a few minutes." },
@@ -54,6 +95,12 @@ export async function POST(request: Request) {
   const errors = validateContact(input);
   if (Object.keys(errors).length > 0) {
     return NextResponse.json({ ok: false, errors }, { status: 400 });
+  }
+
+  const verdict = screenContact(input);
+  if (verdict.block) {
+    console.info("Contact form: dropped spam", { reasons: verdict.reasons });
+    return fakeSuccess();
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -71,6 +118,7 @@ export async function POST(request: Request) {
     ["Company", input.company || "-"],
     ["Service", input.service || "-"],
   ];
+  if (verdict.suspect) rows.push(["Spam check", verdict.reasons.join("; ")]);
   const text = `${rows.map(([k, v]) => `${k}: ${v}`).join("\n")}\n\nMessage:\n${input.message}`;
   const html = `
     <h2 style="font-family:sans-serif">New enquiry from the website</h2>
@@ -93,7 +141,7 @@ export async function POST(request: Request) {
       from,
       to: to.split(",").map((addr) => addr.trim()),
       replyTo: input.email,
-      subject: `New enquiry: ${subjectName}${subjectCompany}`,
+      subject: `${verdict.suspect ? "[Possible spam] " : ""}New enquiry: ${subjectName}${subjectCompany}`,
       text,
       html,
     });

@@ -1,3 +1,5 @@
+import ProtectedEmail from "@/components/ui/ProtectedEmail";
+import { encodeEmail } from "@/lib/email-obfuscation";
 import { pageMetadata } from "@/lib/metadata";
 import siteConfig from "@/data/site_config";
 import LegalPage from "@/components/sections/LegalPage";
@@ -51,7 +53,7 @@ export default function TermsPage() {
       <h2>Changes and contact</h2>
       <p>
         We may update these terms from time to time; the date at the top shows the latest version. Questions? Email{" "}
-        <a href={`mailto:${email}`}>{email}</a>.
+        <ProtectedEmail encoded={encodeEmail(email)} />.
       </p>
     </LegalPage>
   );

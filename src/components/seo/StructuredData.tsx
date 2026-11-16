@@ -40,7 +40,6 @@ function buildData(props: Props) {
         image: absoluteUrl("/opengraph-image"),
         description: siteConfig.description,
         foundingDate: String(siteConfig.foundedYear),
-        email: siteConfig.email,
         telephone: siteConfig.phone.e164,
         address: {
           "@type": "PostalAddress",
