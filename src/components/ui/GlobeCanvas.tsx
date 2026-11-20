@@ -344,11 +344,15 @@ export default function GlobeCanvas({ markers, focus, dragTargetRef, onReady }: 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const dpr = Math.min(2, window.devicePixelRatio || 1);
 
+    // Create the context ourselves: three.js logs console errors when it fails to, and no WebGL is expected on some devices.
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("webgl2", { antialias: true, alpha: true, powerPreference: "high-performance" });
+    if (!context) return; // No WebGL: leave the space empty.
     let renderer: WebGLRenderer;
     try {
-      renderer = new WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+      renderer = new WebGLRenderer({ canvas, context, antialias: true, alpha: true });
     } catch {
-      return; // No WebGL: leave the space empty.
+      return;
     }
     renderer.setPixelRatio(dpr);
     renderer.setClearColor(0x000000, 0);
