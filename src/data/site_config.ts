@@ -2,8 +2,8 @@
 // Update values here instead of editing individual components.
 
 const address = {
-  street: "67/440, 2nd Floor, Mather Square",
-  landmark: "Opp. North Railway Station",
+  street: "67/440, 2nd Floor, Mather Square, Xavier Arakkal Rd",
+  landmark: "Opp. Town Railway Station",
   city: "Kochi",
   region: "Kerala",
   postalCode: "682018",
@@ -15,6 +15,8 @@ export const siteConfig = {
   name: "Xyvin Technologies",
   shortName: "Xyvin",
   legalName: "Xyvin Technologies Private Limited",
+  // Homepage and fallback title: keywords and location first, brand last.
+  defaultTitle: "Software Development Company in Kochi, Kerala | Xyvin Technologies",
   siteUrl: "https://www.xyvin.com",
   description:
     "Xyvin Technologies is a software development company that designs, builds and supports web platforms, mobile apps, ERP systems and AI tools for businesses worldwide.",
@@ -33,7 +35,7 @@ export const siteConfig = {
     number: "918138916303",
     message: "Hello, I'd like to know more about your services.",
   },
-  hours: "Mon–Fri, 9 AM–6 PM IST",
+  hours: "Mon–Sat, 10 AM–6 PM IST",
   responseTime: "within 24 hours",
 
   address,
@@ -50,6 +52,13 @@ export const siteConfig = {
     facebook: "https://www.facebook.com/profile.php?id=61559679521641",
     x: "https://x.com/Xyvintech",
   },
+
+  // Google Business Profile (Maps) link: ties the verified listing to this site in structured data.
+  googleBusinessUrl: "https://maps.google.com/?cid=12862574052673992007",
+  // Map pin from the Google Business Profile.
+  geo: { lat: 9.9915878, lon: 76.2858801 },
+
+  founders: ["Ashin Amanulla", "Afsal Edathil", "Adithya Vishnu"],
 
   // Calendly / Cal.com link for booking calls. Leave empty to send people to the contact page.
   bookingUrl: "",
@@ -83,9 +92,8 @@ export const siteConfig = {
 export const whatsappUrl = (message: string = siteConfig.whatsapp.message) =>
   `https://wa.me/${siteConfig.whatsapp.number}?text=${encodeURIComponent(message)}`;
 
-export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  `Mather Square, ${address.street}, ${address.city} ${address.postalCode}`
-)}`;
+// Opens the Google Business Profile, so directions and reviews land on the verified listing.
+export const mapsUrl = siteConfig.googleBusinessUrl;
 
 export const countriesServed = `${siteConfig.clientCountries.length}+`;
 export const continentsServed = new Set(siteConfig.clientCountries.map((c) => c.continent)).size;

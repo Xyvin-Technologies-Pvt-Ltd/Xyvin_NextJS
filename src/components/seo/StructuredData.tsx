@@ -40,7 +40,16 @@ function buildData(props: Props) {
         image: absoluteUrl("/opengraph-image"),
         description: siteConfig.description,
         foundingDate: String(siteConfig.foundedYear),
+        founder: siteConfig.founders.map((name) => ({ "@type": "Person", name })),
         telephone: siteConfig.phone.e164,
+        email: siteConfig.email,
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "sales",
+          telephone: siteConfig.phone.e164,
+          email: siteConfig.email,
+        },
+        ...(siteConfig.googleBusinessUrl ? { hasMap: siteConfig.googleBusinessUrl } : {}),
         address: {
           "@type": "PostalAddress",
           streetAddress: `${siteConfig.address.street}, ${siteConfig.address.landmark}`,
@@ -49,10 +58,11 @@ function buildData(props: Props) {
           postalCode: siteConfig.address.postalCode,
           addressCountry: siteConfig.address.country,
         },
-        openingHours: "Mo-Fr 09:00-18:00",
+        openingHours: "Mo-Sa 10:00-18:00",
+        geo: { "@type": "GeoCoordinates", latitude: siteConfig.geo.lat, longitude: siteConfig.geo.lon },
         areaServed: siteConfig.clientCountries.map((c) => c.name),
         knowsAbout: [...services.map((s) => s.title), ...industries.map((i) => i.name)],
-        sameAs: Object.values(siteConfig.socials),
+        sameAs: [...Object.values(siteConfig.socials), siteConfig.googleBusinessUrl].filter(Boolean),
       };
 
     case "blog":

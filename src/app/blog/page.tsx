@@ -8,7 +8,7 @@ import StructuredData from "@/components/seo/StructuredData";
 
 export const metadata = pageMetadata({
   title: "Blog",
-  description: "Articles from the Xyvin Technologies team on software development, web, cloud and AI.",
+  description: "Practical articles from the Xyvin Technologies team on custom software, web and mobile development, ERP, cloud and AI for growing businesses.",
   path: "/blog",
 });
 

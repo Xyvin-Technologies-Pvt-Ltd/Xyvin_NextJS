@@ -19,7 +19,7 @@ import Starfield from "@/components/ui/Starfield";
 import IndustryGrid from "@/components/sections/IndustryGrid";
 
 export const metadata = pageMetadata({
-  description: `Xyvin Technologies designs, builds and supports web platforms, mobile apps, ERP systems and AI tools for businesses worldwide. Clients in ${countriesServed} countries.`,
+  description: `Software development company in Kochi, Kerala. Xyvin builds web platforms, mobile apps, ERP systems and AI tools for clients in ${countriesServed} countries.`,
   path: "/",
 });
 
