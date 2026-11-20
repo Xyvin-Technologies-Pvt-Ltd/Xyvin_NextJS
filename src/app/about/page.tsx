@@ -31,7 +31,6 @@ export default function AboutPage() {
         intro={`We're designers, engineers and product people who build web platforms, mobile apps, ERP systems and AI tools for clients in ${countriesServed} countries.`}
       />
 
-      {/* Draft story for review: adjust to your own words. */}
       <Section aria-labelledby="story-heading">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
@@ -41,17 +40,19 @@ export default function AboutPage() {
           </div>
           <div className="space-y-5 text-lg text-navy-800 lg:col-span-7">
             <p>
-              Xyvin started in Trivandrum, in founder Ashin Amanulla&apos;s home, with a simple belief: businesses
-              deserve software that fits the way they work, built by a team that sticks around after launch.
+              Xyvin was founded in Trivandrum by Ashin Amanulla on a simple belief: businesses deserve software that
+              fits the way they work, built by a team that stays with them long after launch. As the company grew,
+              Afsal Edathil and Adithya Vishnu joined as co-founders to help shape that vision and carry it forward.
             </p>
             <p>
-              Today we work with clients across India, the Middle East, Europe, Asia-Pacific and the United States,
-              including trade associations, consumer brands, healthcare providers and software companies. Whether you
-              bring a rough idea or an existing system that needs work, you get the same care.
+              Today, from Trivandrum and Kochi in India and from the UAE, we build custom software for energy and EV
+              technology, education and learning management systems, ERP, AI automation and agentic AI, and cloud
+              platforms designed to scale. Our clients span India, the Middle East, Europe, Asia-Pacific and the United
+              States, from trade associations and consumer brands to healthcare providers and software companies.
             </p>
             <p>
-              We keep teams small, show working software early, and tell you plainly what something will take, even
-              when it&apos;s not what you hoped to hear.
+              Whether you bring a rough idea or an existing system that needs work, you get the same care. We keep
+              teams small, show working software early, and tell you plainly what something will take.
             </p>
           </div>
         </div>
@@ -124,7 +125,7 @@ export default function AboutPage() {
 
       <Section tone="paper" aria-labelledby="clients-heading">
         <SectionHeading id="clients-heading" title="Clients and partners" />
-        <LogoStrip limit={18} />
+        <LogoStrip limit={18} columns={6} />
       </Section>
 
       <CtaBand />
